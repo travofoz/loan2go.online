@@ -27,13 +27,15 @@ export default function Home() {
           backgroundColor: '#993300',
           opacity: 0.30
         }}></div>
-        <div className="page-title-container">
-          <h2 className="page-title">Find Cash</h2>
+        <div className="m-auto w-100 ml-16 lg:ml-32 page-title-container">
+          <h2 className="page-title text-white font-shadow text-5xl lg:text-9xl">Find Cash</h2>
+
+
         </div>
-        <div className="section-title-container">
-          <p className="section-title">Fast, Easy, Secure</p>
+        <div className="section-title-container mr-16">
+          <h3 className="section-title text-white font-shadow m-0 p-0">Fast, Easy, Secure</h3>
         </div>
-        <div className="p-12 m-12 md:absolute md:right-20 md:top-1/2 md:transform md:-translate-y-1/2 p-4 bg-none rounded-lg shadow-lg">
+        <div className="z-[000] p-12 m-12 md:absolute md:right-20 md:top-1/2 md:transform md:-translate-y-1/2 p-4 bg-none rounded-lg shadow-lg">
           <LoanDetails />
         </div>
       </div>
