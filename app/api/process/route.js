@@ -11,6 +11,7 @@ export async function POST(request) {
             data: formData,
         });
 
+    /*
     // Send form data to remote API using fetch
     const response = await fetch('https://example.com/remote-endpoint', {
         method: 'POST',
@@ -22,10 +23,11 @@ export async function POST(request) {
 
     const data = await response.json();
 
-        // Parse redirect_url from the response and return it as a JSON object
-    const redirectUrl = data.redirect_url;
+    // Parse redirect_url from the response and return it as a JSON object
+    //const redirectUrl = data.redirect_url;
+    */
     const redirectUrl = "https://example.com";
-    return NextResponse.json({ redirectUrl });
+    return NextResponse.json({ "redirectUrl": redirectUrl });
     }
 
 export function GET() {

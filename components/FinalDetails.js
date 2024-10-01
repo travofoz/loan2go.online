@@ -56,8 +56,8 @@ const FinalDetails = () => {
             bank_length: localStorage.getItem('bank_length'),
             direct_deposit: localStorage.getItem('direct_deposit'),
             tcpa,
-            tcpa_phone,
-            accept_terms: acceptTerms ? 'yes' : 'no',
+            tcpa_phone: tcpaPhone,
+            accept_terms: acceptTerms ? 'yes' : 'no'
         };
         try {
             // Send form data to /api/process route
@@ -68,6 +68,7 @@ const FinalDetails = () => {
                 },
                 body: JSON.stringify(formData),
             });
+            console.log(response);
 
             // Parse redirect_url from the response and redirect the user
             const { redirectUrl } = await response.json();
@@ -81,24 +82,21 @@ const FinalDetails = () => {
     };
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit}  className="space-y-4 mb-8 p-4 shadow-lg rounded-lg bg-white flex flex-col items-right border-zinc-900 border-4 border-opacity-30">
+            <h2 className="text-lg font-semibold text-zinc-900 mb-4 capitalize">Final Step 6/6</h2>
             <div>
-                <label htmlFor="tcpa">TCPA</label>
-                <select name="tcpa" value={tcpa} onChange={handleChange} required>
-                    <option value="">Select TCPA</option>
-                    <option value="yes">Yes</option>
-                    <option value="no">No</option>
-                </select>
+                <label htmlFor="tcpa_phone" className="block text-sm font-black text-zinc-900">TCPA Phone</label>
+                <input type="tel" name="tcpa_phone" value={tcpaPhone} onChange={handleChange} required className="mt-1 p-2 block w-full rounded-md border-zinc-700 border-2 border-opacity-20  shadow-sm focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50 bg-white"/>
             </div>
-            <div>
-                <label htmlFor="tcpa_phone">TCPA Phone</label>
-                <input type="tel" name="tcpa_phone" value={tcpaPhone} onChange={handleChange} required />
+            <div className="flex items-center">
+                <label htmlFor="tcpa" className="text-sm font-black text-zinc-900 mr-2">TCPA</label>
+                <input type="checkbox" name="tcpa" checked={tcpa === 'yes'} onChange={handleChange} className="mt-1 p-2 rounded-md border-zinc-700 border-2 border-opacity-20 shadow-sm focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50 bg-white"/>
             </div>
-            <div>
-                <label htmlFor="accept_terms">Accept Terms</label>
-                <input type="checkbox" name="accept_terms" checked={acceptTerms} onChange={handleChange} required />
+            <div className="flex items-center">
+                <label htmlFor="accept_terms" className="text-sm font-black text-zinc-900 mr-2">Accept Terms</label>
+                <input type="checkbox" name="accept_terms" checked={acceptTerms} onChange={handleChange} required className="mt-1 p-2 rounded-md border-zinc-700 border-2 border-opacity-20 shadow-sm focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50 bg-white"/>
             </div>
-            <button type="submit">Submit</button>
+            <button type="submit"  className="w-auto flex justify-center py-2 px-4 border-2 border-green-300 rounded-md shadow-sm text-sm font-medium text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 {Object.keys(errors).some(key => errors[key]) ? 'pointer-events-none' : ''}">Submit</button>
         </form>
     );
 };

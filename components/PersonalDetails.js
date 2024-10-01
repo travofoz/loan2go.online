@@ -53,28 +53,29 @@ const PersonalDetails = () => {
     };
 
     return (
-        <form>
+        <form className="space-y-4 mb-8 p-4 shadow-lg rounded-lg bg-white flex flex-col items-right border-zinc-900 border-4 border-opacity-30">
+            <h2 className="text-lg font-semibold text-zinc-900 mb-4 capitalize">Step 2/6: Personal Details</h2>
             <div>
-                <label htmlFor="first_name">First Name</label>
-                <input name="first_name" value={formData.first_name} onChange={handleChange} required className={errors.first_name ? 'border-red-500' : ''} />
+                <label htmlFor="first_name" className="block text-sm font-black text-zinc-900">First Name</label>
+                <input name="first_name" value={formData.first_name} onChange={handleChange} required className="mt-1 p-2 block w-full rounded-md border-zinc-700 border-2 border-opacity-20  shadow-sm focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50 bg-white {errors.first_name ? 'border-red-500' : ''}" />
                 {errors.first_name && <p className="text-red-500 text-xs italic">{errors.first_name}</p>}
             </div>
             <div>
-                <label htmlFor="last_name">Last Name</label>
-                <input name="last_name" value={formData.last_name} onChange={handleChange} required className={errors.last_name ? 'border-red-500' : ''} />
+                <label htmlFor="last_name" className="block text-sm font-black text-zinc-900">Last Name</label>
+                <input name="last_name" value={formData.last_name} onChange={handleChange} required className="mt-1 p-2 block w-full rounded-md border-zinc-700 border-2 border-opacity-20  shadow-sm focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50 bg-white {errors.last_name ? 'border-red-500' : ''}" />
                 {errors.last_name && <p className="text-red-500 text-xs italic">{errors.last_name}</p>}
             </div>
             <div>
-                <label htmlFor="email">Email</label>
-                <input type="email" name="email" value={formData.email} onChange={handleChange} required className={errors.email ? 'border-red-500' : ''} />
+                <label htmlFor="email" className="block text-sm font-black text-zinc-900">Email</label>
+                <input type="email" name="email" value={formData.email} onChange={handleChange} required className="mt-1 p-2 block w-full rounded-md border-zinc-700 border-2 border-opacity-20  shadow-sm focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50 bg-white {errors.email ? 'border-red-500' : ''}" />
                 {errors.email && <p className="text-red-500 text-xs italic">{errors.email}</p>}
             </div>
             <div>
-                <label htmlFor="phone">Phone</label>
-                <input type="tel" name="phone" value={formData.phone} onChange={handleChange} required className={errors.phone ? 'border-red-500' : ''} />
+                <label htmlFor="phone" className="block text-sm font-black text-zinc-900">Phone</label>
+                <input type="tel" name="phone" value={formData.phone} onChange={handleChange} required className="mt-1 p-2 block w-full rounded-md border-zinc-700 border-2 border-opacity-20  shadow-sm focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50 bg-white {errors.phone ? 'border-red-500' : ''}" />
                 {errors.phone && <p className="text-red-500 text-xs italic">{errors.phone}</p>}
             </div>
-            <Link href="/address-details" className={Object.keys(errors).some(key => errors[key]) ? 'pointer-events-none' : ''}>
+            <Link href="/address-details" className="w-auto flex justify-center py-2 px-4 border-2 border-green-300 rounded-md shadow-sm text-sm font-medium text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 {Object.keys(errors).some(key => errors[key]) ? 'pointer-events-none' : ''}">
                 Next
             </Link>
         </form>

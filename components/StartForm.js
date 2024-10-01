@@ -94,7 +94,7 @@ export default function StartForm() {
   };
 
   return (
-    <div className="flex flex-col items-center ">
+    <div className="flex flex-col items-center">
       <h2 className="text-lg font-semibold text-zinc-900 mb-4 capitalize">Please use the following form to contact us</h2>
       <form onSubmit={handleSubmit} className="space-y-4 mb-8 p-4 shadow-lg rounded-lg bg-white">
       <div className="mt-2">

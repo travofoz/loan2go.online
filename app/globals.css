@@ -30,7 +30,7 @@ body {
 @layer components {
   
   form,input,select {
-    @apply p-6 m-6;
+    @apply p-2 m-2 accent-emerald-500;
   }
 
   select {
@@ -66,11 +66,11 @@ body {
   }
 
   .page-title {
-    @apply flex items-center w-full md:m-2 md:p-6 mx-auto md:mx-0 md:w-10/12 text-7xl italic font-black text-left text-white font-shadow uppercase;
+    @apply flex items-center w-full md:m-2 md:p-6 mx-auto md:mx-0 md:w-10/12 text-7xl  font-black text-left text-zinc-950 uppercase;
   }
 
   .section-title {
-    @apply italic  font-bold  text-2xl text-right text-zinc-50 font-shadow;
+    @apply  font-bold  text-2xl text-right text-zinc-800;
   }
 
   .body-text {

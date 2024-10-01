@@ -25,9 +25,11 @@ const LoanDetails = () => {
     };
 
     return (
-        <form>
-            <div>
-                <label htmlFor="loan_amount">Loan Amount</label>
+        <form className="space-y-4 mb-8 p-4 shadow-lg rounded-lg bg-white flex flex-col items-right border-zinc-900 border-4 border-opacity-30">
+            <h2 className="text-lg font-semibold text-zinc-900 mb-4 capitalize">Step 1/6: Loan Details</h2>
+
+            <div className="mt-2">
+                <label htmlFor="loan_amount" className="block text-sm font-black text-zinc-900">Loan Amount</label>
                 <input
                     type="range"
                     name="loan_amount"
@@ -37,12 +39,14 @@ const LoanDetails = () => {
                     value={loanAmount}
                     onChange={handleChange}
                     required
+                    className="m-2 block w-full rounded-md border-zinc-700 border-2 border-opacity-20  focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50 bg-white accent-emerald-700"
                 />
-                <p>Amount: ${loanAmount}</p>
+                <p className="block text-4xl font-black text-emerald-700 text-center">${loanAmount}</p>
             </div>
-            <div>
-                <label htmlFor="loan_purpose">Loan Purpose</label>
-                <select name="loan_purpose" value={loanPurpose} onChange={handleChange} required>
+            <div className="mt-2">
+                <label htmlFor="loan_purpose" className="block text-sm font-black text-zinc-900">Loan Purpose</label>
+                <select name="loan_purpose" value={loanPurpose} onChange={handleChange} required className= "mt-1 p-2 block w-auto rounded-md border-zinc-700 border-2 border-opacity-20  shadow-sm focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50 bg-white"
+                >
                     <option value="">Select Loan Purpose</option>
                     <option value="Emergency">Emergency</option>
                     <option value="Home Repairs">Home Repairs</option>
@@ -57,7 +61,8 @@ const LoanDetails = () => {
                     <option value="Prefer Not To Say">Prefer Not To Say</option>
                 </select>
             </div>
-            <Link href="/personal-details">
+
+            <Link href="/personal-details" className="w-auto flex justify-center py-2 px-4 border-2 border-green-300 rounded-md shadow-sm text-sm font-medium text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500">
                 Next
             </Link>
         </form>
