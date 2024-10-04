@@ -6,16 +6,25 @@ const EmploymentDetails = () => {
     const [jobTitle, setJobTitle] = useState('');
     const [employerPhone, setEmployerPhone] = useState('');
     const [hireDate, setHireDate] = useState('');
+    const [incomeType, setIncomeType] = useState('');
+    const [payFrequency, setPayFrequency] = useState(''); 
+    const [nextPayDate1, setNextPayDate1] = useState(''); 
+    const [nextPayDate2, setNextPayDate2] = useState(''); 
+
 
     useEffect(() => {
         const storedEmployer = localStorage.getItem('employer');
         const storedJobTitle = localStorage.getItem('job_title');
         const storedEmployerPhone = localStorage.getItem('employer_phone');
         const storedHireDate = localStorage.getItem('hire_date');
+        const storedIncomeType = localStorage.getItem('income_type');
+        const storedPayFrequency = localStorage.getItem('pay_frequency'); 
         if (storedEmployer) setEmployer(storedEmployer);
         if (storedJobTitle) setJobTitle(storedJobTitle);
         if (storedEmployerPhone) setEmployerPhone(storedEmployerPhone);
         if (storedHireDate) setHireDate(storedHireDate);
+        if (storedIncomeType) setIncomeType(storedIncomeType);
+        if (storedPayFrequency) setPayFrequency(storedPayFrequency); // Add this line
     }, []);
 
     const handleChange = (e) => {
@@ -32,6 +41,18 @@ const EmploymentDetails = () => {
         } else if (name === 'hire_date') {
             setHireDate(value);
             localStorage.setItem('hire_date', value);
+        } else if (name === 'income_type') {
+            setIncomeType(value);
+            localStorage.setItem('income_type', value);
+        } else if (name === 'pay_frequency') { 
+            setPayFrequency(value);
+            localStorage.setItem('pay_frequency', value);
+        } else if (name === 'next_pay_date_1') { 
+            setNextPayDate1(value);
+            localStorage.setItem('next_pay_date_1', value);
+        } else if (name === 'next_pay_date_2') { 
+            setNextPayDate2(value);
+            localStorage.setItem('next_pay_date_2', value);
         }
     };
 
@@ -39,12 +60,38 @@ const EmploymentDetails = () => {
         <form className="space-y-4 mb-8 p-4 shadow-lg rounded-lg bg-white flex flex-col items-right border-zinc-900 border-4 border-opacity-30">
             <h2 className="text-lg font-semibold text-zinc-900 mb-4 capitalize">Step 4/6: Employment Details</h2>
             <div>
+                <label htmlFor="income_type" className="block text-sm font-black text-zinc-900">Income Type</label>
+                <select name="income_type" value={incomeType} onChange={handleChange} required className="mt-1 p-2 block w-full rounded-md border-zinc-700 border-2 border-opacity-20  shadow-sm focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50 bg-white">
+                    <option value="">Select...</option>
+                    <option value="EMPLOYMENT">Employment</option>
+                    <option value="BENEFITS">Benefits</option>
+                </select>
+            </div>
+            <div>
                 <label htmlFor="employer" className="block text-sm font-black text-zinc-900">Employer</label>
                 <input name="employer" value={employer} onChange={handleChange} required className="mt-1 p-2 block w-full rounded-md border-zinc-700 border-2 border-opacity-20  shadow-sm focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50 bg-white"/>
             </div>
             <div>
                 <label htmlFor="job_title" className="block text-sm font-black text-zinc-900">Job Title</label>
                 <input name="job_title" value={jobTitle} onChange={handleChange} required className="mt-1 p-2 block w-full rounded-md border-zinc-700 border-2 border-opacity-20  shadow-sm focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50 bg-white"/>
+            </div>
+            <div>
+            <label htmlFor="pay_frequency" className="block text-sm font-black text-zinc-900">Pay Frequency</label>
+                <select name="pay_frequency" value={payFrequency} onChange={handleChange} required className="mt-1 p-2 block w-full rounded-md border-zinc-700 border-2 border-opacity-20  shadow-sm focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50 bg-white">
+                    <option value="">Select...</option>
+                    <option value="WEEKLY">Weekly</option>
+                    <option value="BIWEEKLY">Biweekly</option>
+                    <option value="TWICEMONTHLY">Twice monthly</option>
+                    <option value="MONTHLY">Monthly</option>
+                </select>
+            </div>
+            <div>
+                <label htmlFor="next_pay_date_1" className="block text-sm font-black text-zinc-900">Next Pay Date 1</label>
+                <input type="date" name="next_pay_date_1" value={nextPayDate1} onChange={handleChange} required className="mt-1 p-2 block w-full rounded-md border-zinc-700 border-2 border-opacity-20  shadow-sm focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50 bg-white"/>
+            </div>
+            <div>
+                <label htmlFor="next_pay_date_2" className="block text-sm font-black text-zinc-900">Next Pay Date 2</label>
+                <input type="date" name="next_pay_date_2" value={nextPayDate2} onChange={handleChange} required className="mt-1 p-2 block w-full rounded-md border-zinc-700 border-2 border-opacity-20  shadow-sm focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50 bg-white"/>
             </div>
             <div>
                 <label htmlFor="employer_phone" className="block text-sm font-black text-zinc-900">Employer Phone</label>

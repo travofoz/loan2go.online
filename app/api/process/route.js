@@ -29,17 +29,16 @@ export async function POST(request) {
         "activeMilitary": formData.active_military , 
         "workTimeAtEmployer": formData.hire_date ,
         "ssn": formData.ssn ,
-        "driversLicenseNumber": formData.drivers_license_number , // investigate this field
-        "driversLicenseState": formData.drivers_license_state , // investigate this field
-        "incomeType": formData.income_type , // investigate this field
-        "incomePaymentFrequency": formData.income_payment_frequency , // investigate this field
-        "incomeNetMonthly": formData.income_net_monthly , // investigate this field
-        "incomeNextDate1": formData.income_next_date1 , // investigate this field
-        "incomeNextDate2": formData.income_next_date2 , // investigate this field
+        "driversLicenseNumber": formData.id_number , 
+        "driversLicenseState": formData.id_state , 
+        "incomeType": formData.income_type , 
+        "incomePaymentFrequency": formData.income_payment_frequency , 
+        "incomeNetMonthly": formData.income_net_monthly , 
+        "incomeNextDate1": formData.income_next_date1 , 
+        "incomeNextDate2": formData.income_next_date2 , 
         "bankDirectDeposit": formData.direct_deposit ,
         "bankAba": formData.routing_number ,
         "bankName": formData.bank_name ,
-        "bankPhone": formData.bank_phone , // investigate this field
         "bankAccountNumber": formData.account_number ,
         "bankAccountType": formData.account_type ,
         "bankAccountLengthMonths": formData.bank_length ,
