@@ -60,7 +60,7 @@ const PersonalDetails = () => {
             localStorage.setItem(name, value);
         }
         */
-       localStorage.setItem(name,value);
+        localStorage.setItem(name,value);
     };
 
     return (
