@@ -44,7 +44,7 @@ export async function POST(request) {
         "bankAccountLengthMonths": formData.bank_length ,
         "firstName": formData.first_name ,
         "lastName": formData.last_name ,
-        "dob": formData.dob , // investigate this field
+        "dob": formData.dob , 
         "address": formData.address1 ,
         "zip": formData.zipcode ,
         "city": formData.city ,

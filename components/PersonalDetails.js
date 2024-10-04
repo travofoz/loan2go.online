@@ -53,12 +53,14 @@ const PersonalDetails = () => {
 
     const handleBlur = (e) => {
         const { name, value } = e.target;
-        const error = validate(name, value);
+        /*const error = validate(name, value);
         setErrors({ ...errors, [name]: error });
         setTouched({ ...touched, [name]: true });
         if (!error) {
             localStorage.setItem(name, value);
         }
+        */
+       localStorage.setItem(name,value);
     };
 
     return (
