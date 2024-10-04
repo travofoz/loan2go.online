@@ -88,8 +88,7 @@ export async function POST(request) {
     const redirectUrl = data.redirect_url;
 
     return NextResponse.json({ redirectUrl });
-
-    export function GET() {
-        return NextResponse.json({ error: 'Method not allowed' }, { status: 405 });
-    }
-
+}
+export function GET() {
+    return NextResponse.json({ error: 'Method not allowed' }, { status: 405 });
+}
