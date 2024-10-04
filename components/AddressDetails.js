@@ -127,7 +127,17 @@ const AddressDetails = () => {
             </div>
             <div>
                 <label htmlFor="residence_length" className="block text-sm font-black text-zinc-900">Residence Length</label>
-                <input type="number" name="residence_length" value={residenceLength} onChange={handleChange} required className="mt-1 p-2 block w-full rounded-md border-zinc-700 border-2 border-opacity-20  shadow-sm focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50 bg-white"/>
+                <input
+                    type="range"
+                    name="residence_length"
+                    min="0"
+                    max="10"
+                    value={residenceLength}
+                    onChange={handleChange}
+                    required
+                    className="m-2 block w-full rounded-md border-zinc-700 border-2 border-opacity-20  focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50 bg-white accent-emerald-700"
+                />
+                <p>Years: {residenceLength === "0" ? "Less than a year" : `${residenceLength} years`}</p>
             </div>
             <Link href="/employment-details" className="w-auto flex justify-center py-2 px-4 border-2 border-green-300 rounded-md shadow-sm text-sm font-medium text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 {Object.keys(errors).some(key => errors[key]) ? 'pointer-events-none' : ''}">
                 Next
