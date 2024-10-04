@@ -49,18 +49,14 @@ export async function POST(request) {
         "zip": formData.zipcode ,
         "city": formData.city ,
         "state": formData.state ,
-        "ownHome": formData.own_home , // investigate this field
+        "ownHome": formData.residence_type ,
         "addressLengthMonths": formData.residence_length ,
         "email": formData.email ,
-        "homePhone": formData.phone , // investigate this field
+        "homePhone": formData.phone , 
         "workPhone": formData.employer_phone ,
         "cellPhone": formData.cell_phone , // investigate this field
-        "consentEmailSms": formData.consent_email_sms , // investigate this field
-        "unsecuredDebt": formData.unsecured_debt , // investigate this field
-        "creditRating": formData.credit_rating , // investigate this field
+        "consentEmailSms": formData.tcpa , 
         "loanPurpose": formData.loan_purpose , // investigate this field
-        "consentToFcra": formData.consent_to_fcra , // investigate this field
-        "autoTitle": formData.auto_title , // investigate this field
         "testMode": formData.test_mode , // investigate this field
         "clickid": formData.clickid , // investigate this field
         "source": formData.affiliate_sub_id , 
