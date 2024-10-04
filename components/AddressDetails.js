@@ -8,6 +8,8 @@ const AddressDetails = () => {
     const [state, setState] = useState('');
     const [zipcode, setZipcode] = useState('');
     const [residenceLength, setResidenceLength] = useState('');
+    const [errors, setErrors] = useState({});
+
 
     useEffect(() => {
         const storedAddress1 = localStorage.getItem('address1');
@@ -24,26 +26,57 @@ const AddressDetails = () => {
         if (storedResidenceLength) setResidenceLength(storedResidenceLength);
     }, []);
 
+    const validate = (name, value) => {
+        switch (name) {
+            case 'address1':
+            case 'address2':
+            case 'city':
+                if (!value.match(/^[a-zA-Z0-9\s,'-]*$/)) {
+                    setErrors(prevErrors => ({ ...prevErrors, [name]: 'Invalid input' }));
+                } else {
+                    setErrors(prevErrors => ({ ...prevErrors, [name]: '' }));
+                }
+                break;
+            case 'state':
+                if (!value.match(/^[A-Z]{2}$/)) {
+                    setErrors(prevErrors => ({ ...prevErrors, [name]: 'Invalid state' }));
+                } else {
+                    setErrors(prevErrors => ({ ...prevErrors, [name]: '' }));
+                }
+                break;
+            case 'zipcode':
+                if (!value.match(/^\d{5}(?:-\d{4})?$/)) {
+                    setErrors(prevErrors => ({ ...prevErrors, [name]: 'Invalid zip code' }));
+                } else {
+                    setErrors(prevErrors => ({ ...prevErrors, [name]: '' }));
+                }
+                break;
+            default:
+                break;
+        }
+    };
+
+    const handleBlur = (e) => {
+        const { name, value } = e.target;
+        validate(name, value);
+        localStorage.setItem(name, value);
+    }
+
     const handleChange = (e) => {
         const { name, value } = e.target;
+        validate(name, value);
         if (name === 'address1') {
             setAddress1(value);
-            localStorage.setItem('address1', value);
         } else if (name === 'address2') {
             setAddress2(value);
-            localStorage.setItem('address2', value);
         } else if (name === 'city') {
             setCity(value);
-            localStorage.setItem('city', value);
         } else if (name === 'state') {
             setState(value);
-            localStorage.setItem('state', value);
         } else if (name === 'zipcode') {
             setZipcode(value);
-            localStorage.setItem('zipcode', value);
         } else if (name === 'residence_length') {
             setResidenceLength(value);
-            localStorage.setItem('residence_length', value);
         }
     };
 
@@ -52,19 +85,19 @@ const AddressDetails = () => {
             <h2 className="text-lg font-semibold text-zinc-900 mb-4 capitalize">Step 3/6: Address Details</h2>
             <div>
                 <label htmlFor="address1" className="block text-sm font-black text-zinc-900">Address Line 1</label>
-                <input name="address1" value={address1} onChange={handleChange} required className="mt-1 p-2 block w-full rounded-md border-zinc-700 border-2 border-opacity-20  shadow-sm focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50 bg-white"/>
+                <input name="address1" value={address1} onChange={handleChange} onBlur={handleBlur} required className="mt-1 p-2 block w-full rounded-md border-zinc-700 border-2 border-opacity-20  shadow-sm focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50 bg-white"/>
             </div>
             <div>
                 <label htmlFor="address2" className="block text-sm font-black text-zinc-900">Address Line 2</label>
-                <input name="address2" value={address2} onChange={handleChange} className="mt-1 p-2 block w-full rounded-md border-zinc-700 border-2 border-opacity-20  shadow-sm focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50 bg-white"/>
+                <input name="address2" value={address2} onChange={handleChange} onBlur={handleBlur} className="mt-1 p-2 block w-full rounded-md border-zinc-700 border-2 border-opacity-20  shadow-sm focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50 bg-white"/>
             </div>
             <div>
                 <label htmlFor="city" className="block text-sm font-black text-zinc-900">City</label>
-                <input name="city" value={city} onChange={handleChange} required className="mt-1 p-2 block w-full rounded-md border-zinc-700 border-2 border-opacity-20  shadow-sm focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50 bg-white"/>
+                <input name="city" value={city} onChange={handleChange} onBlur={handleBlur} required className="mt-1 p-2 block w-full rounded-md border-zinc-700 border-2 border-opacity-20  shadow-sm focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50 bg-white"/>
             </div>
             <div>
                 <label htmlFor="state" className="block text-sm font-black text-zinc-900">State</label>
-                <select name="state" value={state} onChange={handleChange} required className="mt-1 p-2 block w-full rounded-md border-zinc-700 border-2 border-opacity-20  shadow-sm focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50 bg-white">
+                <select name="state" value={state} onChange={handleChange} onBlur={handleBlur} required className="mt-1 p-2 block w-full rounded-md border-zinc-700 border-2 border-opacity-20  shadow-sm focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50 bg-white">
                     <option value="">Select State</option>
                     <option value="">Select State</option>
                     <option value="AL">Alabama</option>
@@ -123,7 +156,7 @@ const AddressDetails = () => {
             </div>
             <div>
                 <label htmlFor="zipcode" className="block text-sm font-black text-zinc-900">Zip Code</label>
-                <input name="zipcode" value={zipcode} onChange={handleChange} required className="mt-1 p-2 block w-full rounded-md border-zinc-700 border-2 border-opacity-20  shadow-sm focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50 bg-white"/>
+                <input name="zipcode" value={zipcode} onChange={handleChange} onBlur={handleBlur} required className="mt-1 p-2 block w-full rounded-md border-zinc-700 border-2 border-opacity-20  shadow-sm focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50 bg-white"/>
             </div>
             <div>
                 <label htmlFor="residence_length" className="block text-sm font-black text-zinc-900">Residence Length</label>
@@ -133,7 +166,7 @@ const AddressDetails = () => {
                     min="0"
                     max="10"
                     value={residenceLength}
-                    onChange={handleChange}
+                    onChange={handleChange} onBlur={handleBlur}
                     required
                     className="m-2 block w-full rounded-md border-zinc-700 border-2 border-opacity-20  focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50 bg-white accent-emerald-700"
                 />
