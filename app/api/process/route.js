@@ -63,8 +63,8 @@ export async function POST(request) {
         "autoTitle": formData.auto_title , // investigate this field
         "testMode": formData.test_mode , // investigate this field
         "clickid": formData.clickid , // investigate this field
-        "source": formData.source , // investigate this field
-        "webSiteUrl": formData.web_site_url , // investigate this field
+        "source": formData.affiliate_sub_id , 
+        "webSiteUrl": "https://loan2go.online" , 
         "tPar": {
             "affiliateId": formData.affiliate_id , // investigate this field
             "affiliateSubId": formData.affiliate_sub_id , // investigate this field
