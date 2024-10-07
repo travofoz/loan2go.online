@@ -6,6 +6,7 @@ import BackgroundImage from "@/components/backgroundimage";
 //import { JsonResume } from 'jsonresume-component';
 import React from "react";
 import "./globals.css";
+import TrustedForm from "@/components/TrustedForm";
 
 const myfont = Montserrat({ subsets: ["latin"] });
 const titlefont = Anton({ subsets: ["latin"], weight: "400" });
@@ -22,6 +23,7 @@ export default function RootLayout({ children }) {
     return (
         <html lang="en">
             <body className={`w-full h-full ${myfont.className} overflow-y-auto`}>
+                <TrustedForm />
                 <BackgroundImage src="money-bg.webp" /> 
                 <div className="bg-overlay">
                     <Header font={titlefont.className} slug="Loan2GO.Online" />
