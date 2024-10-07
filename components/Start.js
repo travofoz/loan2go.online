@@ -30,9 +30,9 @@ const Start = () => {
         if (storedLoanAmount) setLoanAmount(storedLoanAmount);
         if (storedLoanPurpose) setLoanPurpose(storedLoanPurpose);
         if (storedClickID) setLoanPurpose(storedClickID);
-        if (storedAffiliateID) setLoanPurpose(storedAffiliateID);
-        if (storedAffiliateSubID) setLoanPurpose(storedAffiliateSubID);
-        if (storedAffiliateRefID) setLoanPurpose(storedAffiliateRefID);
+        if (storedAffiliateID) setAffiliateID(storedAffiliateID);
+        if (storedAffiliateSubID) setAffiliateSubID(storedAffiliateSubID);
+        if (storedAffiliateRefID) setAffiliateRefID(storedAffiliateRefID);
 
     }, []);
 

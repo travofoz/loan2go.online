@@ -7,7 +7,8 @@ const PersonalDetails = () => {
         last_name: '',
         email: '',
         phone: '',
-        active_military: 'No'
+        active_military: 'No',
+        dob: ''
     });
     const [errors, setErrors] = useState({});
     const [touched, setTouched] = useState({});
@@ -17,17 +18,20 @@ const PersonalDetails = () => {
         const storedLastName = localStorage.getItem('last_name');
         const storedEmail = localStorage.getItem('email');
         const storedPhone = localStorage.getItem('phone');
+        const storedDOB = localStorage.getItem('dob');
         const storedActiveMilitary = localStorage.getItem('active_military');
         if (storedFirstName) setFormData({ ...formData, first_name: storedFirstName });
         if (storedLastName) setFormData({ ...formData, last_name: storedLastName });
         if (storedEmail) setFormData({ ...formData, email: storedEmail });
         if (storedPhone) setFormData({ ...formData, phone: storedPhone });
+        if (storedDOB) setFormData({...formData, dob: storedDOB});
         if (storedActiveMilitary) setFormData({ ...formData, active_military: storedActiveMilitary });
     }, []);
 
     const validate = (name, value) => {
         let error = '';
         switch (name) {
+            case 'dob':
             case 'first_name':
             case 'last_name':
                 if (!value) error = 'This field is required';
@@ -85,6 +89,10 @@ const PersonalDetails = () => {
                 <label htmlFor="phone" className="block text-sm font-black text-zinc-900">Phone</label>
                 <input type="tel" name="phone" value={formData.phone} onChange={handleChange} onBlur={handleBlur} required className={`mt-1 p-2 block w-full rounded-md border-2 shadow-sm focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50 bg-white ${touched.phone && errors.phone ? 'border-red-500' : 'border-zinc-700 border-opacity-20'}`} />
                 {touched.phone && errors.phone && <p className="text-red-500 text-xs italic">{errors.phone}</p>}
+            </div>
+            <div>
+                <label htmlFor="dob" className="block text-sm font-black text-zinc-900">Date of Birth</label>
+                <input type="date" name="dob" value={hireDate} onChange={handleChange} required className="mt-1 p-2 block w-full rounded-md border-zinc-700 border-2 border-opacity-20  shadow-sm focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50 bg-white"/>
             </div>
             <div>
                 <label htmlFor="active_military" className="block text-sm font-black text-zinc-900">Active Military</label>
