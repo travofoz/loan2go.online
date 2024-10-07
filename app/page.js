@@ -11,7 +11,7 @@ export default function Home() {
     setLoanAmount(event.target.value);
   };
   return (
-    <Suspense fallback={<div>Loading...</div>}>
+    <Suspense>
     <div className="page-container p-0">
 
       <div className="flex-container m-0 p-0" style={{

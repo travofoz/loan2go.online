@@ -10,15 +10,16 @@ const Start = () => {
     const [loanAmount, setLoanAmount] = useState(500);
     const [loanPurpose, setLoanPurpose] = useState('');
     const [clickID, setClickID] = useState(searchParams.get("CID"));
-    localStorage.setItem('clickid', clickID);
     const [affiliateID, setAffiliateID] = useState(searchParams.get("AID"));
-    localStorage.setItem('affiliate_id', affiliateID);
     const [affiliateSubID, setAffiliateSubID] = useState(searchParams.get("SID"));
-    localStorage.setItem('affiliate_sub_id', affiliateSubID);
     const [affiliateRefID, setAffiliateRefID] = useState(searchParams.get("ARID"));
-    localStorage.setItem('affiliate_ref_id', affiliateRefID);
 
     useEffect(() => {
+        localStorage.setItem('clickid', clickID);
+        localStorage.setItem('affiliate_id', affiliateID);
+        localStorage.setItem('affiliate_sub_id', affiliateSubID);
+        localStorage.setItem('affiliate_ref_id', affiliateRefID);
+
         const storedLoanAmount = localStorage.getItem('loan_amount');
         const storedLoanPurpose = localStorage.getItem('loan_purpose');
         const storedClickID = localStorage.getItem('clickid');
@@ -29,7 +30,7 @@ const Start = () => {
 
         if (storedLoanAmount) setLoanAmount(storedLoanAmount);
         if (storedLoanPurpose) setLoanPurpose(storedLoanPurpose);
-        if (storedClickID) setLoanPurpose(storedClickID);
+        if (storedClickID) setClickID(storedClickID);
         if (storedAffiliateID) setAffiliateID(storedAffiliateID);
         if (storedAffiliateSubID) setAffiliateSubID(storedAffiliateSubID);
         if (storedAffiliateRefID) setAffiliateRefID(storedAffiliateRefID);
