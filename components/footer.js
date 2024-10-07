@@ -7,7 +7,7 @@ export default function Footer() {
         <div className="border-t-2 border-zinc-700 bg-zinc-950 flex flex-col items-center px-1 py-2 relative z-10">
             <div className="px-6 mx-6 flex flex-col items-center w-full md:flex-row md:justify-center md:items-start w-full">
                 <div className="text-lg w-full text-center text-zinc-200 mb-4 md:w-3/12 text-center md:text-left">
-                    <p className="italic text-lime-300 pb-2 mb-2 font-bold">It's Fast, Easy, and Safe.</p>
+                    <p className="italic text-lime-300 pb-2 mb-2 font-bold">It&apos;s Fast, Easy, and Safe.</p>
                     <p className=" text-yellow-300 pb-2 mb-2 font-bold">Try Loan2GO.Online Today</p>
                 </div>
                 
