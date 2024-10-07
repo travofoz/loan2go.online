@@ -36,6 +36,18 @@ const EmploymentDetails = () => {
 
     }, []);
 
+    const handleBlur = (e) => {
+        const { name, value } = e.target;
+        /*const error = validate(name, value);
+        setErrors({ ...errors, [name]: error });
+        setTouched({ ...touched, [name]: true });
+        if (!error) {
+            localStorage.setItem(name, value);
+        }
+        */
+        localStorage.setItem(name,value);
+    };
+    
     const handleChange = (e) => {
         const { name, value } = e.target;
         if (name === 'employer') {
