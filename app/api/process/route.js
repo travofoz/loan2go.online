@@ -5,7 +5,7 @@ const prisma = new PrismaClient();
 
 export async function POST(request) {
     const formData = await request.json();
-    const userIp = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
+    const userIp = request.headers['x-forwarded-for'] || request.connection.remoteAddress;
     const userAgent = navigator.userAgent;
 
 
