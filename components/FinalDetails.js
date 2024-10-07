@@ -4,21 +4,32 @@ const FinalDetails = () => {
     const [consent, setConsent] = useState('');
     const [tcpaPhone, setTcpaPhone] = useState('');
     const [acceptTerms, setAcceptTerms] = useState(false);
+    const [tfCcertURL, setTfCertURL] = useState('');
+    const [tfToken, setTfToken] = useState('');
+    const [tfPingURL, setTfPingURL] = useState('');
+
 
     useEffect(() => {
         const storedConsent = localStorage.getItem('consent_sms_email');
         const storedTcpaPhone = localStorage.getItem('tcpa_phone');
         const storedAcceptTerms = localStorage.getItem('accept_terms');
+        const storedTfCertURL = document.querySelector('#xxTrustedFormCertUrl_0');
+        const storedTfToken = document.querySelector('#xxTrustedFormToken_0');
+        const storedTfPingURL = document.querySelector('#xxTrustedFormPingUrl_0');
         if (storedConsent) setConsent(storedConsent);
         if (storedTcpaPhone) setTcpaPhone(storedTcpaPhone);
         if (storedAcceptTerms) setAcceptTerms(JSON.parse(storedAcceptTerms));
+        if (storedTfCertURL) setTfCertURL(storedTfCertURL.value);
+        if (storedTfToken) setTfToken(storedTfToken.value);
+        if (storedTfPingURL) setTfPingURL(storedTfPingURL.value);
+
     }, []);
 
     const handleChange = (e) => {
         const { name, value, type, checked } = e.target;
         if (name === 'consent_sms_email') {
             setConsent(value);
-            localStorage.setItem('consent_sms_email', value);
+            localStorage.setItem('consent_sms_email', checked);
         } else if (name === 'tcpa_phone') {
             setTcpaPhone(value);
             localStorage.setItem('tcpa_phone', value);
@@ -41,7 +52,7 @@ const FinalDetails = () => {
             id_number: localStorage.getItem('id_number'),
             id_state: localStorage.getItem('id_state'),
             income_type: localStorage.getItem('income_type'),
-            income_payment_frequency: localStorage.getItem('income_payment_frequency'),
+            income_payment_frequency: localStorage.getItem('pay_frequency'),
             loan_purpose: localStorage.getItem('loan_purpose'),
             first_name: localStorage.getItem('first_name'),
             last_name: localStorage.getItem('last_name'),
@@ -62,7 +73,15 @@ const FinalDetails = () => {
             direct_deposit: localStorage.getItem('direct_deposit'),
             consent_sms_email: consent ? 'YES' : 'NO',
             tcpa_phone: tcpaPhone,
-            accept_terms: acceptTerms ? 'YES' : 'NO'
+            accept_terms: acceptTerms ? 'YES' : 'NO',
+            clickid: localStorage.getItem('clickid'),
+            affiliate_id: localStorage.getItem('affiliate_id'),
+            affiliate_ref_id: localStorage.getItem('affiliate_ref_id'),
+            affiliate_sub_id: localStorage.getItem('affiliate_sub_id'),
+            offer_id: "9",
+            xxTrustedFormCertUrl: tfCcertURL,
+            xxTrustedFormToken: tfToken,
+            xxTrustedFormPingUrl: tfPingURL
         };
         try {
             // Send form data to /api/process route
@@ -95,7 +114,7 @@ const FinalDetails = () => {
             </div>
             <div className="flex items-center">
                 <label htmlFor="consent_sms_email" className="text-sm font-black text-zinc-900 mr-2">Consent to receive Email and SMS</label>
-                <input type="checkbox" name="consent_sms_email" checked={consentSMSEMAIL} onChange={handleChange} className="mt-1 p-2 rounded-md border-zinc-700 border-2 border-opacity-20 shadow-sm focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50 bg-white"/>
+                <input type="checkbox" name="consent_sms_email" checked={consent} onChange={handleChange} className="mt-1 p-2 rounded-md border-zinc-700 border-2 border-opacity-20 shadow-sm focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50 bg-white"/>
             </div>
             <div className="flex items-center">
                 <label htmlFor="accept_terms" className="text-sm font-black text-zinc-900 mr-2">Accept Terms</label>

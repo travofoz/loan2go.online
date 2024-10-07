@@ -71,18 +71,17 @@ const Start = () => {
                 <label htmlFor="loan_purpose" className="block text-sm font-black text-zinc-900">Loan Purpose</label>
                 <select name="loan_purpose" value={loanPurpose} onChange={handleChange} required className= "mt-1 p-2 block w-auto rounded-md border-zinc-700 border-2 border-opacity-20  shadow-sm focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50 bg-white"
                 >
-                    <option value="">Select Loan Purpose</option>
-                    <option value="Emergency">Emergency</option>
-                    <option value="Home Repairs">Home Repairs</option>
-                    <option value="Home Improvement">Home Improvement</option>
-                    <option value="Rent">Rent</option>
-                    <option value="Bills">Bills</option>
-                    <option value="Vacation">Vacation</option>
-                    <option value="Vehicle Payment">Vehicle Payment</option>
-                    <option value="Vehicle Purchase">Vehicle Purchase</option>
-                    <option value="Vehicle Repairs">Vehicle Repairs</option>
-                    <option value="Other">Other</option>
-                    <option value="Prefer Not To Say">Prefer Not To Say</option>
+                    <option value="OTHER">Select Loan Purpose</option>
+                    <option value="EMERGENCY_SITUATION">Emergency</option>
+                    <option value="AUTO_REPAIR">Auto Repairs</option>
+                    <option value="HOME_IMPROVEMENT">Home Improvement</option>
+                    <option value="MOVING">Moving Expenses</option>
+                    <option value="MEDICAL">Medical Care / Bills</option>
+                    <option value="MAJOR_PURCHASE">MAJOR_PURPOSE</option>
+                    <option value="CREDIT_CARD_CONSOLIDATION">Credit Card Consolidation</option>
+                    <option value="DEBT_CONSOLIDATION">Debt Consolidation</option>
+                    <option value="OTHER">Other</option>
+                    <option value="OTHER">Prefer Not To Say</option>
                 </select>
             </div>
 

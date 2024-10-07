@@ -7,7 +7,7 @@ const PersonalDetails = () => {
         last_name: '',
         email: '',
         phone: '',
-        active_military: 'No',
+        active_military: '',
         dob: ''
     });
     const [errors, setErrors] = useState({});
@@ -51,20 +51,18 @@ const PersonalDetails = () => {
     };
 
     const handleChange = (e) => {
+        
         const { name, value } = e.target;
         setFormData({ ...formData, [name]: value });
     };
 
     const handleBlur = (e) => {
-        const { name, value } = e.target;
-        /*const error = validate(name, value);
-        setErrors({ ...errors, [name]: error });
-        setTouched({ ...touched, [name]: true });
-        if (!error) {
-            localStorage.setItem(name, value);
+        const { name, value, type, checked } = e.target;
+        if (name === 'active_military') {
+            localStorage.setItem('active_military', checked);
+        } else {
+            localStorage.setItem(name,value);
         }
-        */
-        localStorage.setItem(name,value);
     };
 
     return (
