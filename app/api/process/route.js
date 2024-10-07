@@ -56,15 +56,15 @@ export async function POST(request) {
         "homePhone": formData.phone , 
         "workPhone": formData.employer_phone ,
         "cellPhone": formData.phone ,
-        "consentEmailSms": formData.tcpa , 
-        "loanPurpose": formData.loan_purpose , // investigate this field
-        "clickid": formData.clickid , // investigate this field
+        "consentEmailSms": formData.consent_email_sms   , 
+        "loanPurpose": formData.loan_purpose , 
+        "clickid": formData.clickid , 
         "source": formData.affiliate_sub_id , 
         "webSiteUrl": "https://loan2go.online" , 
         "tPar": {
-            "affiliateId": formData.affiliate_id , // investigate this field
-            "affiliateSubId": formData.affiliate_sub_id , // investigate this field
-            "transactionId": formData.transaction_id , // investigate this field
+            "affiliateId": formData.affiliate_id , 
+            "affiliateSubId": formData.affiliate_sub_id , 
+            "transactionId": formData.affiliate_ref_id , 
             "offerId": formData.offer_id // investigate this field
         }
     }

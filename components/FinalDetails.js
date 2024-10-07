@@ -1,24 +1,24 @@
 import React, { useState, useEffect } from 'react';
 
 const FinalDetails = () => {
-    const [tcpa, setTcpa] = useState('');
+    const [consentSMSEMAIL, setConsent] = useState('');
     const [tcpaPhone, setTcpaPhone] = useState('');
     const [acceptTerms, setAcceptTerms] = useState(false);
 
     useEffect(() => {
-        const storedTcpa = localStorage.getItem('tcpa');
+        const storedConsent = localStorage.getItem('consent_sms_email');
         const storedTcpaPhone = localStorage.getItem('tcpa_phone');
         const storedAcceptTerms = localStorage.getItem('accept_terms');
-        if (storedTcpa) setTcpa(storedTcpa);
+        if (storedConsent) setConsent(storedConsent);
         if (storedTcpaPhone) setTcpaPhone(storedTcpaPhone);
         if (storedAcceptTerms) setAcceptTerms(JSON.parse(storedAcceptTerms));
     }, []);
 
     const handleChange = (e) => {
         const { name, value, type, checked } = e.target;
-        if (name === 'tcpa') {
-            setTcpa(value);
-            localStorage.setItem('tcpa', value);
+        if (name === 'consent_sms_email') {
+            setConsent(value);
+            localStorage.setItem('consent_sms_email', value);
         } else if (name === 'tcpa_phone') {
             setTcpaPhone(value);
             localStorage.setItem('tcpa_phone', value);
@@ -33,6 +33,16 @@ const FinalDetails = () => {
         // validation logic here
         const formData = {
             loan_amount: localStorage.getItem('loan_amount'),
+            employer: localStorage.getItem('employer'),
+            job_title: localStorage.getItem('job_title'),
+            active_military: localStorage.getItem('active_military'),
+            hire_date: localStorage.getItem('hire_date'),
+            ssn: localStorage.getItem('ssn'),
+            id_number: localStorage.getItem('id_number'),
+            id_state: localStorage.getItem('id_state'),
+            income_type: localStorage.getItem('income_type'),
+            income_payment_frequency: localStorage.getItem('income_payment_frequency'),
+
             loan_purpose: localStorage.getItem('loan_purpose'),
             first_name: localStorage.getItem('first_name'),
             last_name: localStorage.getItem('last_name'),
@@ -44,20 +54,16 @@ const FinalDetails = () => {
             state: localStorage.getItem('state'),
             zipcode: localStorage.getItem('zipcode'),
             residence_length: localStorage.getItem('residence_length'),
-            employer: localStorage.getItem('employer'),
-            job_title: localStorage.getItem('job_title'),
             employer_phone: localStorage.getItem('employer_phone'),
-            hire_date: localStorage.getItem('hire_date'),
-            ssn: localStorage.getItem('ssn'),
             routing_number: localStorage.getItem('routing_number'),
             bank_name: localStorage.getItem('bank_name'),
             account_number: localStorage.getItem('account_number'),
             account_type: localStorage.getItem('account_type'),
             bank_length: localStorage.getItem('bank_length'),
             direct_deposit: localStorage.getItem('direct_deposit'),
-            tcpa,
+            consent_sms_email: consentSMSEMAIL,
             tcpa_phone: tcpaPhone,
-            accept_terms: acceptTerms ? 'yes' : 'no'
+            accept_terms: acceptTerms ? 'YES' : 'NO'
         };
         try {
             // Send form data to /api/process route
@@ -89,8 +95,8 @@ const FinalDetails = () => {
                 <input type="tel" name="tcpa_phone" value={tcpaPhone} onChange={handleChange} required className="mt-1 p-2 block w-full rounded-md border-zinc-700 border-2 border-opacity-20  shadow-sm focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50 bg-white"/>
             </div>
             <div className="flex items-center">
-                <label htmlFor="tcpa" className="text-sm font-black text-zinc-900 mr-2">TCPA</label>
-                <input type="checkbox" name="tcpa" checked={tcpa === 'yes'} onChange={handleChange} className="mt-1 p-2 rounded-md border-zinc-700 border-2 border-opacity-20 shadow-sm focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50 bg-white"/>
+                <label htmlFor="consent_sms_email" className="text-sm font-black text-zinc-900 mr-2">Consent to receive Email and SMS</label>
+                <input type="checkbox" name="consent_sms_email" checked={consentSMSEMAIL === 'yes'} onChange={handleChange} className="mt-1 p-2 rounded-md border-zinc-700 border-2 border-opacity-20 shadow-sm focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50 bg-white"/>
             </div>
             <div className="flex items-center">
                 <label htmlFor="accept_terms" className="text-sm font-black text-zinc-900 mr-2">Accept Terms</label>

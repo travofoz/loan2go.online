@@ -10,6 +10,7 @@ const EmploymentDetails = () => {
     const [payFrequency, setPayFrequency] = useState(''); 
     const [nextPayDate1, setNextPayDate1] = useState(''); 
     const [nextPayDate2, setNextPayDate2] = useState(''); 
+    const [incomeNetMonthly, setIncomeNetMonthly] = useState('500');
 
 
     useEffect(() => {
@@ -19,12 +20,20 @@ const EmploymentDetails = () => {
         const storedHireDate = localStorage.getItem('hire_date');
         const storedIncomeType = localStorage.getItem('income_type');
         const storedPayFrequency = localStorage.getItem('pay_frequency'); 
+        const storedNextPayDate1 = localStorage.getItem('next_pay_date_1'); 
+        const storedNextPayDate2 = localStorage.getItem('next_pay_date_2'); 
+        const storedIncomeNetMonthly = localStorage.getItem('income_net_monthly'); 
         if (storedEmployer) setEmployer(storedEmployer);
         if (storedJobTitle) setJobTitle(storedJobTitle);
         if (storedEmployerPhone) setEmployerPhone(storedEmployerPhone);
         if (storedHireDate) setHireDate(storedHireDate);
         if (storedIncomeType) setIncomeType(storedIncomeType);
-        if (storedPayFrequency) setPayFrequency(storedPayFrequency); // Add this line
+        if (storedPayFrequency) setPayFrequency(storedPayFrequency); 
+        if (storedNextPayDate1) setNextPayDate1(storedNextPayDate1); 
+        if (storedNextPayDate2) setNextPayDate1(storedNextPayDate2); 
+        if (storedIncomeNetMonthly) setIncomeNetMonthly(storedIncomeNetMonthly); 
+
+
     }, []);
 
     const handleChange = (e) => {
@@ -53,6 +62,9 @@ const EmploymentDetails = () => {
         } else if (name === 'next_pay_date_2') { 
             setNextPayDate2(value);
             localStorage.setItem('next_pay_date_2', value);
+        } else if (name === 'income_net_monthly') { 
+            setIncomeNetMonthly(value);
+            localStorage.setItem('income_net_monthly', value);
         }
     };
 
@@ -92,6 +104,21 @@ const EmploymentDetails = () => {
             <div>
                 <label htmlFor="next_pay_date_2" className="block text-sm font-black text-zinc-900">Next Pay Date 2</label>
                 <input type="date" name="next_pay_date_2" value={nextPayDate2} onChange={handleChange} required className="mt-1 p-2 block w-full rounded-md border-zinc-700 border-2 border-opacity-20  shadow-sm focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50 bg-white"/>
+            </div>
+            <div>
+                <label htmlFor="income_net_monthly" className="block text-sm font-black text-zinc-900">Net Monthly Income</label>
+                <input
+                    type="range"
+                    name="income_net_monthly"
+                    min="500"
+                    max="10000"
+                    step="500"
+                    value={incomeNetMonthly}
+                    onChange={handleChange}
+                    required
+                    className="m-2 block w-full rounded-md border-zinc-700 border-2 border-opacity-20  focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50 bg-white accent-emerald-700"
+                />
+                <p className="block text-4xl font-black text-emerald-700 text-center">${incomeNetMonthly}</p>
             </div>
             <div>
                 <label htmlFor="employer_phone" className="block text-sm font-black text-zinc-900">Employer Phone</label>

@@ -1,16 +1,39 @@
 'use client'
 import React, { useState, useEffect } from 'react';
+import { useSearchParams } from "next/navigation";
 import Link from 'next/link';
 
 const Start = () => {
+
+    const searchParams = useSearchParams();
+
     const [loanAmount, setLoanAmount] = useState(500);
     const [loanPurpose, setLoanPurpose] = useState('');
+    const [clickID, setClickID] = useState(searchParams.get("CID"));
+    localStorage.setItem('clickid', clickID);
+    const [affiliateID, setAffiliateID] = useState(searchParams.get("AID"));
+    localStorage.setItem('affiliate_id', affiliateID);
+    const [affiliateSubID, setAffiliateSubID] = useState(searchParams.get("SID"));
+    localStorage.setItem('affiliate_sub_id', affiliateSubID);
+    const [affiliateRefID, setAffiliateRefID] = useState(searchParams.get("ARID"));
+    localStorage.setItem('affiliate_ref_id', affiliateRefID);
 
     useEffect(() => {
         const storedLoanAmount = localStorage.getItem('loan_amount');
         const storedLoanPurpose = localStorage.getItem('loan_purpose');
+        const storedClickID = localStorage.getItem('clickid');
+        const storedAffiliateID = localStorage.getItem('affiliate_id');
+        const storedAffiliateSubID = localStorage.getItem('affiliate_sub_id');
+        const storedAffiliateRefID = localStorage.getItem('affiliate_ref_id');
+
+
         if (storedLoanAmount) setLoanAmount(storedLoanAmount);
         if (storedLoanPurpose) setLoanPurpose(storedLoanPurpose);
+        if (storedClickID) setLoanPurpose(storedClickID);
+        if (storedAffiliateID) setLoanPurpose(storedAffiliateID);
+        if (storedAffiliateSubID) setLoanPurpose(storedAffiliateSubID);
+        if (storedAffiliateRefID) setLoanPurpose(storedAffiliateRefID);
+
     }, []);
 
     const handleChange = (e) => {
