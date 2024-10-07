@@ -89,8 +89,8 @@ const PersonalDetails = () => {
             <div>
                 <label htmlFor="active_military" className="block text-sm font-black text-zinc-900">Active Military</label>
                 <select name="active_military" value={formData.active_military} onChange={handleChange} required className="mt-1 p-2 block w-full rounded-md border-zinc-700 border-2 border-opacity-20  shadow-sm focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50 bg-white">
-                    <option value="No">No</option>
-                    <option value="Yes">Yes</option>
+                    <option value="NO">No</option>
+                    <option value="YES">Yes</option>
                 </select>
             </div>
             <Link href="/address-details" className={`w-auto flex justify-center py-2 px-4 border-2 rounded-md shadow-sm text-sm font-medium text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 ${Object.keys(errors).some(key => errors[key]) ? 'pointer-events-none opacity-50' : 'border-green-300'}`}>

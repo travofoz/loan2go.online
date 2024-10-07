@@ -17,8 +17,9 @@ export async function POST(request) {
     // Send form data to remote API using fetch
     const url = "https://leads-inst523-client.phonexa.com/lead/";
     const jsonBody = {
-        "apiId": "B2B85FCF8BCB4D7AA12C9BEBA32BE685",
-        "apiPassword": "13c697d",
+        "testMode": 1 ,
+        "apiId": "F3F4A0A3E8AE439CA241AC6FCFB1C841",
+        "apiPassword": "5d3c3291",
         "productId": "1",
         "price": "0.01",
         "userIp": userIp ,
@@ -41,7 +42,7 @@ export async function POST(request) {
         "bankName": formData.bank_name ,
         "bankAccountNumber": formData.account_number ,
         "bankAccountType": formData.account_type ,
-        "bankAccountLengthMonths": formData.bank_length ,
+        "bankAccountLengthMonths": (formData.bank_length *12),
         "firstName": formData.first_name ,
         "lastName": formData.last_name ,
         "dob": formData.dob , 
@@ -50,14 +51,13 @@ export async function POST(request) {
         "city": formData.city ,
         "state": formData.state ,
         "ownHome": formData.residence_type ,
-        "addressLengthMonths": formData.residence_length ,
+        "addressLengthMonths": (formData.residence_length * 12),
         "email": formData.email ,
         "homePhone": formData.phone , 
         "workPhone": formData.employer_phone ,
-        "cellPhone": formData.cell_phone , // investigate this field
+        "cellPhone": formData.phone ,
         "consentEmailSms": formData.tcpa , 
         "loanPurpose": formData.loan_purpose , // investigate this field
-        "testMode": formData.test_mode , // investigate this field
         "clickid": formData.clickid , // investigate this field
         "source": formData.affiliate_sub_id , 
         "webSiteUrl": "https://loan2go.online" , 

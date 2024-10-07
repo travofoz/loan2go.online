@@ -165,20 +165,31 @@ const BankDetails = () => {
                 <label htmlFor="account_type" className="block text-sm font-black text-zinc-900">Account Type</label>
                 <select name="account_type" value={accountType} onChange={handleChange} required className="mt-1 p-2 block w-full rounded-md border-zinc-700 border-2 border-opacity-20  shadow-sm focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50 bg-white">
                     <option value="">Select Account Type</option>
-                    <option value="checking">Checking</option>
-                    <option value="savings">Savings</option>
+                    <option value="CHECKING">Checking</option>
+                    <option value="SAVINGS">Savings</option>
                     </select>
             </div>
             <div>
                 <label htmlFor="bank_length" className="block text-sm font-black text-zinc-900">Bank Length</label>
-                <input type="number" name="bank_length" value={bankLength} onChange={handleChange} required className="mt-1 p-2 block w-full rounded-md border-zinc-700 border-2 border-opacity-20  shadow-sm focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50 bg-white"/>
+                <input
+                    type="range"
+                    name="bank_length"
+                    min="0.5"
+                    max="20"
+                    step="0.5"
+                    value={bankLength}
+                    onChange={handleChange}
+                    required
+                    className="m-2 block w-full rounded-md border-zinc-700 border-2 border-opacity-20  focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50 bg-white accent-emerald-700"
+                />
+                <p className="block text-4xl font-black text-emerald-700 text-center">${bankLength} Years</p>
             </div>
             <div>
                 <label htmlFor="direct_deposit" className="block text-sm font-black text-zinc-900">Direct Deposit</label>
                 <select name="direct_deposit" value={directDeposit} onChange={handleChange} required className="mt-1 p-2 block w-full rounded-md border-zinc-700 border-2 border-opacity-20  shadow-sm focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50 bg-white">
                     <option value="">Select Direct Deposit</option>
-                    <option value="yes">Yes</option>
-                    <option value="no">No</option>
+                    <option value="YES">Yes</option>
+                    <option value="NO">No</option>
                 </select>
             </div>
             <Link href="/final-details"  className="w-auto flex justify-center py-2 px-4 border-2 border-green-300 rounded-md shadow-sm text-sm font-medium text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 {Object.keys(errors).some(key => errors[key]) ? 'pointer-events-none' : ''}">
