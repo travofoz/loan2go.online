@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 const FinalDetails = () => {
-    const [consentSMSEMAIL, setConsent] = useState('');
+    const [consent, setConsent] = useState('');
     const [tcpaPhone, setTcpaPhone] = useState('');
     const [acceptTerms, setAcceptTerms] = useState(false);
 
@@ -60,7 +60,7 @@ const FinalDetails = () => {
             account_type: localStorage.getItem('account_type'),
             bank_length: localStorage.getItem('bank_length'),
             direct_deposit: localStorage.getItem('direct_deposit'),
-            consent_sms_email: consentSMSEMAIL,
+            consent_sms_email: consent ? 'YES' : 'NO',
             tcpa_phone: tcpaPhone,
             accept_terms: acceptTerms ? 'YES' : 'NO'
         };
@@ -91,11 +91,11 @@ const FinalDetails = () => {
             <h2 className="text-lg font-semibold text-zinc-900 mb-4 capitalize">Final Step 6/6</h2>
             <div>
                 <label htmlFor="tcpa_phone" className="block text-sm font-black text-zinc-900">TCPA Phone</label>
-                <input type="tel" name="tcpa_phone" value={tcpaPhone} onChange={handleChange} required className="mt-1 p-2 block w-full rounded-md border-zinc-700 border-2 border-opacity-20  shadow-sm focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50 bg-white"/>
+                <input type="tel" name="tcpa_phone" value={tcpaPhone} onChange={handleChange} className="mt-1 p-2 block w-full rounded-md border-zinc-700 border-2 border-opacity-20  shadow-sm focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50 bg-white"/>
             </div>
             <div className="flex items-center">
                 <label htmlFor="consent_sms_email" className="text-sm font-black text-zinc-900 mr-2">Consent to receive Email and SMS</label>
-                <input type="checkbox" name="consent_sms_email" checked={consentSMSEMAIL === 'yes'} onChange={handleChange} className="mt-1 p-2 rounded-md border-zinc-700 border-2 border-opacity-20 shadow-sm focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50 bg-white"/>
+                <input type="checkbox" name="consent_sms_email" checked={consentSMSEMAIL} onChange={handleChange} className="mt-1 p-2 rounded-md border-zinc-700 border-2 border-opacity-20 shadow-sm focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50 bg-white"/>
             </div>
             <div className="flex items-center">
                 <label htmlFor="accept_terms" className="text-sm font-black text-zinc-900 mr-2">Accept Terms</label>

@@ -33,7 +33,7 @@ export async function POST(request) {
         "driversLicenseNumber": formData.id_number , 
         "driversLicenseState": formData.id_state , 
         "incomeType": formData.income_type , 
-        "incomePaymentFrequency": formData.income_payment_frequency , 
+        "incomePaymentFrequency": formData.pay_frequency , 
         "incomeNetMonthly": formData.income_net_monthly , 
         "incomeNextDate1": formData.income_next_date1 , 
         "incomeNextDate2": formData.income_next_date2 , 

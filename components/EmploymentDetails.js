@@ -47,7 +47,7 @@ const EmploymentDetails = () => {
         */
         localStorage.setItem(name,value);
     };
-    
+
     const handleChange = (e) => {
         const { name, value } = e.target;
         if (name === 'employer') {
