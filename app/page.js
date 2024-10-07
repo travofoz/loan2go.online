@@ -1,5 +1,7 @@
 'use client'
 import React, { useState } from 'react';
+import { Suspense } from "react";
+
 import Start from '@/components/Start';
 
 export default function Home() {
@@ -9,6 +11,7 @@ export default function Home() {
     setLoanAmount(event.target.value);
   };
   return (
+    <Suspense fallback={<div>Loading...</div>}>
     <div className="page-container p-0">
 
       <div className="flex-container m-0 p-0" style={{
@@ -66,5 +69,6 @@ We commit to connecting you with an approved lender. We also made the process si
           </div>
         </div>
     </div>
+    </Suspense>
   );
 }
