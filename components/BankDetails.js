@@ -45,7 +45,7 @@ const BankDetails = () => {
         */
         localStorage.setItem(name,value);
     };
-    
+
     const handleChange = (e) => {
         const { name, value } = e.target;
 
@@ -193,7 +193,8 @@ const BankDetails = () => {
                     required
                     className="m-2 block w-full rounded-md border-zinc-700 border-2 border-opacity-20  focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50 bg-white accent-emerald-700"
                 />
-                <p className="block text-4xl font-black text-emerald-700 text-center">${bankLength} Years</p>
+                <p className="block text-4xl font-black text-emerald-700 text-center">{bankLength === "0.5" ? "Less than a year" : `${bankLength} years`}</p>
+
             </div>
             <div>
                 <label htmlFor="direct_deposit" className="block text-sm font-black text-zinc-900">Direct Deposit</label>

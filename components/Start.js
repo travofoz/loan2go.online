@@ -49,7 +49,7 @@ const Start = () => {
     };
 
     return (
-        <form className="space-y-4 mb-8 p-4 md:p-16 shadow-lg rounded-lg bg-white flex flex-col items-right border-zinc-900 border-4 border-opacity-30">
+        <form className="space-y-4 mb-8 p-16 shadow-lg rounded-lg bg-white flex flex-col items-right border-zinc-900 border-4 border-opacity-30">
             <h2 className="text-lg font-semibold text-zinc-900 mb-4 capitalize">Step 1/6: Loan Details</h2>
 
             <div className="mt-2">

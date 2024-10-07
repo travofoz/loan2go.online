@@ -42,7 +42,6 @@ const FinalDetails = () => {
             id_state: localStorage.getItem('id_state'),
             income_type: localStorage.getItem('income_type'),
             income_payment_frequency: localStorage.getItem('income_payment_frequency'),
-
             loan_purpose: localStorage.getItem('loan_purpose'),
             first_name: localStorage.getItem('first_name'),
             last_name: localStorage.getItem('last_name'),
