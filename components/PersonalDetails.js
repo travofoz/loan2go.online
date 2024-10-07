@@ -92,7 +92,7 @@ const PersonalDetails = () => {
             </div>
             <div>
                 <label htmlFor="dob" className="block text-sm font-black text-zinc-900">Date of Birth</label>
-                <input type="date" name="dob" value={hireDate} onChange={handleChange} required className="mt-1 p-2 block w-full rounded-md border-zinc-700 border-2 border-opacity-20  shadow-sm focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50 bg-white"/>
+                <input type="date" name="dob" value={formData.dob} onChange={handleChange} required className="mt-1 p-2 block w-full rounded-md border-zinc-700 border-2 border-opacity-20  shadow-sm focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50 bg-white"/>
             </div>
             <div>
                 <label htmlFor="active_military" className="block text-sm font-black text-zinc-900">Active Military</label>
