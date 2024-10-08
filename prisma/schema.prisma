@@ -48,6 +48,9 @@ model LoanApplication {
   offer_id           String?
   tcpa_phone         String?
   accept_terms       String?
+  xxTrustedFormCertUrl String?
+  xxTrustedFormToken String?
+  xxTrustedFormPingUrl String?
   createdAt          DateTime @default(now())
   updatedAt          DateTime @updatedAt
 }
