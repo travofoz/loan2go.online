@@ -14,8 +14,8 @@ export async function POST(request) {
     });
 
     // Send form data to remote API using fetch
-    const url = "https://leads-inst523-client.phonexa.com/lead/";
-    //const url = "http://192.168.1.50:9999";
+    //const url = "https://leads-inst523-client.phonexa.com/lead/";
+    const url = "http://192.168.1.50:9999";
     const jsonBody = {
         "testMode": 1 ,
         "apiId": "F3F4A0A3E8AE439CA241AC6FCFB1C841",

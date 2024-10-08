@@ -57,11 +57,26 @@ const PersonalDetails = () => {
     };
 
     const handleChange = (e) => {
-        
         const { name, value } = e.target;
-        setFormData({ ...formData, [name]: value });
-        localStorage.setItem(name,value);
-
+        if (name === 'first_name') {
+            setFirstName(value);
+            localStorage.setItem('first_name', value);
+        } else if (name === 'last_name') {
+            setLastName(value);
+            localStorage.setItem('last_name', value);
+        } else if (name === 'email') {
+            setEmail(value);
+            localStorage.setItem('email', value);
+        } else if (name === 'phone') {
+            setPhone(value);
+            localStorage.setItem('phone', value);
+        } else if (name === 'active_military') {
+            setActiveMilitary(value);
+            localStorage.setItem('active_military', value);
+        } else if (name === 'dob') { 
+            setDob(value);
+            localStorage.setItem('dob', value);
+        } 
     };
 
     const handleBlur = (e) => {
