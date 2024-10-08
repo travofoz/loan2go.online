@@ -83,8 +83,7 @@ const FinalDetails = (req) => {
             offer_id: "9",
             xxTrustedFormCertUrl: tfCcertURL,
             xxTrustedFormToken: tfToken,
-            xxTrustedFormPingUrl: tfPingURL,
-            user_ip: localStorage.getItem('user_ip')
+            xxTrustedFormPingUrl: tfPingURL
         };
         try {
             // Send form data to /api/process route
