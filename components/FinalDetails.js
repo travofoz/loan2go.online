@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-const FinalDetails = () => {
+const FinalDetails = (req) => {
     const [consent, setConsent] = useState('');
     const [tcpaPhone, setTcpaPhone] = useState('');
     const [acceptTerms, setAcceptTerms] = useState(false);
@@ -8,14 +8,18 @@ const FinalDetails = () => {
     const [tfToken, setTfToken] = useState('');
     const [tfPingURL, setTfPingURL] = useState('');
 
+    //const userIp = req.connection.remoteAddress;
+    //localStorage.setItem('user_ip', userIp);
+
+
 
     useEffect(() => {
         const storedConsent = localStorage.getItem('consent_sms_email');
         const storedTcpaPhone = localStorage.getItem('tcpa_phone');
         const storedAcceptTerms = localStorage.getItem('accept_terms');
-        const storedTfCertURL = document.querySelector('#xxTrustedFormCertUrl_0');
-        const storedTfToken = document.querySelector('#xxTrustedFormToken_0');
-        const storedTfPingURL = document.querySelector('#xxTrustedFormPingUrl_0');
+        const storedTfCertURL = document.querySelector('#xxTrustedFormCertUrl_0').value;
+        const storedTfToken = document.querySelector('#xxTrustedFormToken_0').value;
+        const storedTfPingURL = document.querySelector('#xxTrustedFormPingUrl_0').value;
         if (storedConsent) setConsent(storedConsent);
         if (storedTcpaPhone) setTcpaPhone(storedTcpaPhone);
         if (storedAcceptTerms) setAcceptTerms(JSON.parse(storedAcceptTerms));
@@ -81,7 +85,8 @@ const FinalDetails = () => {
             offer_id: "9",
             xxTrustedFormCertUrl: tfCcertURL,
             xxTrustedFormToken: tfToken,
-            xxTrustedFormPingUrl: tfPingURL
+            xxTrustedFormPingUrl: tfPingURL,
+            user_ip: localStorage.getItem('user_ip')
         };
         try {
             // Send form data to /api/process route
