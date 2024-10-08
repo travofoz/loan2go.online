@@ -1,13 +1,12 @@
 import { PrismaClient } from '@prisma/client';
-import { NextResponse } from 'next/server';
+import { NextRequest, NextResponse, userAgent } from 'next/server'
 
 const prisma = new PrismaClient();
 
-export async function POST(request) {
+export async function POST(request: NextRequest, response: NextResponse) {
     const formData = await request.json();
     const userIp = request.headers.get('X-Forwarded-For');
-    const userAgent = navigator.userAgent;
-
+    const { device, ua } = userAgent(request);
 
     // Write form data to loan application table using Prisma
     await prisma.loanApplication.create({
@@ -23,7 +22,7 @@ export async function POST(request) {
         "productId": "1",
         "price": "0.01",
         "userIp": userIp ,
-        "userAgent": userAgent ,
+        "userAgent": ua ,
         "loanAmount": formData.loan_amount ,
         "workCompanyName": formData.employer ,
         "jobTitle": formData.job_title ,
