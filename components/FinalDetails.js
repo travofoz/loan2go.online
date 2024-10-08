@@ -8,8 +8,6 @@ const FinalDetails = (req) => {
     const [tfToken, setTfToken] = useState('');
     const [tfPingURL, setTfPingURL] = useState('');
 
-    const userIp = request.headers.get('X-Forwarded-For');
-    localStorage.setItem('user_ip', userIp);
 
 
 
