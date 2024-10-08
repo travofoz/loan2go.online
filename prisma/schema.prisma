@@ -35,7 +35,6 @@ model LoanApplication {
   ssn                String?
   routing_number     String?
   bank_name          String?
-  bank_length        String?
   account_number     String?
   account_type       String?
   bank_length        String?
