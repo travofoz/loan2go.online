@@ -17,15 +17,15 @@ const FinalDetails = (req) => {
         const storedConsent = localStorage.getItem('consent_sms_email');
         const storedTcpaPhone = localStorage.getItem('tcpa_phone');
         const storedAcceptTerms = localStorage.getItem('accept_terms');
-        const storedTfCertURL = document.querySelector('#xxTrustedFormCertUrl_0').value;
-        const storedTfToken = document.querySelector('#xxTrustedFormToken_0').value;
-        const storedTfPingURL = document.querySelector('#xxTrustedFormPingUrl_0').value;
+        const storedTfCertURL = document.querySelector('#xxTrustedFormCertUrl_0');
+        const storedTfToken = document.querySelector('#xxTrustedFormToken_0');
+        const storedTfPingURL = document.querySelector('#xxTrustedFormPingUrl_0');
         if (storedConsent) setConsent(storedConsent);
         if (storedTcpaPhone) setTcpaPhone(storedTcpaPhone);
         if (storedAcceptTerms) setAcceptTerms(JSON.parse(storedAcceptTerms));
-        if (storedTfCertURL) setTfCertURL(storedTfCertURL.value);
-        if (storedTfToken) setTfToken(storedTfToken.value);
-        if (storedTfPingURL) setTfPingURL(storedTfPingURL.value);
+        if (storedTfCertURL) setTfCertURL(storedTfCertURL);
+        if (storedTfToken) setTfToken(storedTfToken);
+        if (storedTfPingURL) setTfPingURL(storedTfPingURL);
 
     }, []);
 
