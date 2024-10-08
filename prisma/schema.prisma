@@ -40,7 +40,7 @@ model LoanApplication {
   account_type       String?
   bank_length        String?
   direct_deposit     String?
-  consent_email_sms  String?
+  consent_sms_email  String?
   clickid            String?
   affiliate_sub_id   String?
   affiliate_id       String?

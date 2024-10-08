@@ -55,7 +55,7 @@ export async function POST(request) {
         "homePhone": formData.phone , 
         "workPhone": formData.employer_phone ,
         "cellPhone": formData.phone ,
-        "consentEmailSms": formData.consent_email_sms   , 
+        "consentEmailSms": formData.consent_sms_email   , 
         "loanPurpose": formData.loan_purpose , 
         "clickid": formData.clickid , 
         "source": formData.affiliate_sub_id , 
