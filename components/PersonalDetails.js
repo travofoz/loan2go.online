@@ -58,11 +58,8 @@ const PersonalDetails = () => {
 
     const handleBlur = (e) => {
         const { name, value, type, checked } = e.target;
-        if (name === 'active_military') {
-            localStorage.setItem('active_military', checked);
-        } else {
-            localStorage.setItem(name,value);
-        }
+        localStorage.setItem(name,value);
+    
     };
 
     return (

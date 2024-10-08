@@ -1,0 +1,77 @@
+-- CreateTable
+CREATE TABLE "LoanApplication" (
+    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "loan_amount" TEXT,
+    "loan_purpose" TEXT,
+    "first_name" TEXT,
+    "last_name" TEXT,
+    "email" TEXT,
+    "phone" TEXT,
+    "address1" TEXT,
+    "address2" TEXT,
+    "city" TEXT,
+    "state" TEXT,
+    "zipcode" TEXT,
+    "residence_length" TEXT,
+    "employer" TEXT,
+    "job_title" TEXT,
+    "employer_phone" TEXT,
+    "hire_date" TEXT,
+    "income_net_monthly" TEXT,
+    "income_payment_frequency" TEXT,
+    "income_next_date1" TEXT,
+    "income_next_date2" TEXT,
+    "id_number" TEXT,
+    "id_state" TEXT,
+    "income_type" TEXT,
+    "active_military" TEXT,
+    "ssn" TEXT,
+    "routing_number" TEXT,
+    "bank_name" TEXT,
+    "account_number" TEXT,
+    "account_type" TEXT,
+    "bank_length" TEXT,
+    "direct_deposit" TEXT,
+    "consent_sms_email" TEXT,
+    "clickid" TEXT,
+    "affiliate_sub_id" TEXT,
+    "affiliate_id" TEXT,
+    "affiliate_ref_id" TEXT,
+    "offer_id" TEXT,
+    "tcpa_phone" TEXT,
+    "accept_terms" TEXT,
+    "xxTrustedFormCertUrl" TEXT,
+    "xxTrustedFormToken" TEXT,
+    "xxTrustedFormPingUrl" TEXT,
+    "user_ip" TEXT,
+    "user_agent" TEXT,
+    "createdAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" DATETIME NOT NULL
+);
+
+-- CreateTable
+CREATE TABLE "Contact" (
+    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "name" TEXT,
+    "email" TEXT,
+    "phone" TEXT,
+    "company" TEXT,
+    "role" TEXT,
+    "otherRole" TEXT,
+    "bestTimeToContact" TEXT,
+    "howDidYouHearAboutUs" TEXT,
+    "otherSource" TEXT,
+    "subject" TEXT,
+    "optIn" BOOLEAN NOT NULL DEFAULT false,
+    "createdAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+
+-- CreateTable
+CREATE TABLE "Link" (
+    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "title" TEXT,
+    "url" TEXT,
+    "description" TEXT,
+    "updatedAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "category" TEXT
+);
