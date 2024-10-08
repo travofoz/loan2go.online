@@ -9,39 +9,51 @@ datasource db {
 
 model LoanApplication {
   id                 Int      @id @default(autoincrement())
-  loan_amount        String
-  loan_purpose       String
-  first_name         String
-  last_name          String
-  email              String
-  phone              String
-  address1           String
+  loan_amount        String?
+  loan_purpose       String?
+  first_name         String?
+  last_name          String?
+  email              String?
+  phone              String?
+  address1           String?
   address2           String?
-  city               String
-  state              String
-  zipcode            String
-  residence_length   String
-  employer           String
-  job_title          String
-  employer_phone     String
-  hire_date          String
-  ssn                String
-  routing_number     String
-  bank_name          String
-  account_number     String
-  account_type       String
-  bank_length        String
-  direct_deposit     String
-  tcpa               String
+  city               String?
+  state              String?
+  zipcode            String?
+  residence_length   String?
+  employer           String?
+  job_title          String?
+  employer_phone     String?
+  hire_date          String?
+  income_net_monthly String?
+  income_next_date1  String?
+  income_next_date2  String?
+  id_number          String?
+  id_state           String?
+  income_type        String?
+  active_military    String?
+  ssn                String?
+  routing_number     String?
+  bank_name          String?
+  bank_length        String?
+  account_number     String?
+  account_type       String?
+  bank_length        String?
+  direct_deposit     String?
+  consent_email_sms               String?
+  clickid            String?
+  affiliate_sub_id   String?
+  affiliate_id       String?
+  affiliate_reference_id String?
   tcpa_phone         String?
-  accept_terms       String
+  accept_terms       String?
   createdAt          DateTime @default(now())
   updatedAt          DateTime @updatedAt
 }
 
 model Contact {
   id                   Int      @id @default(autoincrement())
-  name                 String
+  name                 String?
   email                String?
   phone                String?
   company              String?
@@ -57,10 +69,10 @@ model Contact {
 
 model Link {
   id          Int      @id @default(autoincrement())
-  title       String
-  url         String
-  description String
+  title       String?
+  url         String?
+  description String?
   updatedAt   DateTime @updatedAt @default(now())
-  category    String
+  category    String?
 }
 
