@@ -82,7 +82,8 @@ export async function POST(request) {
     // Parse redirect_url from the response and return it as a JSON object
     const redirectUrl = data.redirect_url;
 
-    return NextResponse.json({ redirectUrl });
+    //return NextResponse.json({ redirectUrl });
+    return data;
 }
 export function GET() {
     return NextResponse.json({ error: 'Method not allowed' }, { status: 405 });
