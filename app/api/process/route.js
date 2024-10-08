@@ -3,7 +3,7 @@ import { NextRequest, NextResponse, userAgent } from 'next/server'
 
 const prisma = new PrismaClient();
 
-export async function POST(request: NextRequest, response: NextResponse) {
+export async function POST(request, response) {
     const formData = await request.json();
     const userIp = request.headers.get('X-Forwarded-For');
     const { device, ua } = userAgent(request);
