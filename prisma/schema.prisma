@@ -44,7 +44,7 @@ model LoanApplication {
   clickid            String?
   affiliate_sub_id   String?
   affiliate_id       String?
-  affiliate_reference_id String?
+  affiliate_ref_id String?
   tcpa_phone         String?
   accept_terms       String?
   createdAt          DateTime @default(now())
