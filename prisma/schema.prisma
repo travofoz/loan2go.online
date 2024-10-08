@@ -26,7 +26,7 @@ model LoanApplication {
   employer_phone     String?
   hire_date          String?
   income_net_monthly String?
-  income_pay_frequency String?
+  income_payment_frequency String?
   income_next_date1  String?
   income_next_date2  String?
   id_number          String?
