@@ -7,7 +7,7 @@ const PersonalDetails = () => {
         last_name: '',
         email: '',
         phone: '',
-        active_military: '',
+        active_military: 'NO',
         dob: ''
     });
     const [errors, setErrors] = useState({});
@@ -54,6 +54,8 @@ const PersonalDetails = () => {
         
         const { name, value } = e.target;
         setFormData({ ...formData, [name]: value });
+        localStorage.setItem(name,value);
+
     };
 
     const handleBlur = (e) => {
