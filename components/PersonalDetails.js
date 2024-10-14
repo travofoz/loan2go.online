@@ -41,7 +41,7 @@ const PersonalDetails = () => {
                 break;
             case 'phone':
                 if (!value) error = 'This field is required';
-                else if (!/^\d{10}$/.test(value) || !/^\d{3}-\d{3}-\d{4}$/.test(value)) error = 'Invalid phone number';
+                else if (!/^\d{10}$/.test(value)) error = 'Invalid phone number';
                 break;
             default:
                 break;
