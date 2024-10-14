@@ -132,13 +132,13 @@ const BankDetails = () => {
         <form className="space-y-4 mb-8 p-4 shadow-lg rounded-lg bg-white flex flex-col items-right border-zinc-900 border-4 border-opacity-30">
             <h2 className="text-lg font-semibold text-zinc-900 mb-4 capitalize">Step 5/6: Banks Details</h2>
             <div>
-                <label htmlFor="id_number" className="block text-sm font-black text-zinc-900">ID Number</label>
+                <label htmlFor="id_number" className="block text-sm font-black text-zinc-900">License / ID Number</label>
                 <input type="text" name="id_number" value={idNumber} onChange={handleChange} onBlur={handleBlur} required className="mt-1 p-2 block w-full rounded-md border-zinc-700 border-2 border-opacity-20  shadow-sm focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50 bg-white"/>
                 {touched.id_number && errors.id_number && <p className="text-red-500 text-xs italic">{errors.id_number}</p>}
 
             </div>
             <div>
-                <label htmlFor="id_state" className="block text-sm font-black text-zinc-900">ID State</label>
+                <label htmlFor="id_state" className="block text-sm font-black text-zinc-900">License / ID State</label>
                 <select name="id_state" value={idState} onChange={handleChange} onBlur={handleBlur} required className="mt-1 p-2 block w-full rounded-md border-zinc-700 border-2 border-opacity-20  shadow-sm focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50 bg-white">
                     <option value="">Select State</option>
                     <option value="AL">Alabama</option>
