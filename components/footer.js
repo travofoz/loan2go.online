@@ -31,15 +31,18 @@ export default function Footer() {
                 </div>
                 
                 <div className="w-full text-center text-zinc-400 mb-4 md:w-3/12 md:text-right md:pt-4 md:pt-1 md:flex md:flex-col md:justify-end items-center md:items-end">
+                { /* 
                     <h4 className="pb-1 text-purple-300">Follow Us On Social Media</h4>
-                    <ul className="flex flex-row justify-center w-full mt-2 md:justify-end md:w-auto md:mt-8">
+                    <ul className="flex flex-row justify-center w-full mt-2 md:justify-end md:w-auto md:mt-8">  
                         {socialMediaLinks.map((link, index) => (
                             <li key={index} className="px-1">
                                 <SocialIcon style={{ height: 32, width: 32 }} target="_blank" url={link.url} />
                             </li>
                         ))}
                     </ul>
+                 */ }
                 </div>
+               
             </div>
 <div className="mt-4 px-6 mx-6 w-full md:flex md:flex-row md:justify-between bg-zinc-500">
     <div className="my-6 w-full text-center text-zinc-200 mb-4 md:w-1/2 md:text-left">
