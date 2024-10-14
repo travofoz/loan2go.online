@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import Link from 'next/link';
+//import Link from 'next/link';
+import dynamic from 'next/dynamic';
+const DynamicLink = dynamic(() => import('next/link'), { ssr: false });
 
 const EmploymentDetails = () => {
     const [employer, setEmployer] = useState('');
@@ -187,9 +189,9 @@ const EmploymentDetails = () => {
                 {touched.hire_date && errors.hire_date && <p className="text-red-500 text-xs italic">{errors.hire_date}</p>}
 
             </div>
-            <Link href="/bank-details" className={`w-auto flex justify-center py-2 px-4 border-2 rounded-md shadow-sm text-sm font-medium text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 ${!isFormValid() ? 'pointer-events-none opacity-50' : 'border-green-300'}`}>
+            <DynamicLink  href="/bank-details" className={`w-auto flex justify-center py-2 px-4 border-2 rounded-md shadow-sm text-sm font-medium text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 ${!isFormValid() ? 'pointer-events-none opacity-50' : 'border-green-300'}`}>
                 Next
-            </Link>
+            </DynamicLink>
         </form>
     );
 };
