@@ -102,7 +102,7 @@ const EmploymentDetails = () => {
             <div>
             <label htmlFor="pay_frequency" className="block text-sm font-black text-zinc-900">Pay Frequency</label>
                 <select name="pay_frequency" value={payFrequency} onChange={handleChange} required className="mt-1 p-2 block w-full rounded-md border-zinc-700 border-2 border-opacity-20  shadow-sm focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50 bg-white">
-                    <option value="">Select...</option>
+                    <option value="BIWEEKLY">Select...</option>
                     <option value="WEEKLY">Weekly</option>
                     <option value="BIWEEKLY">Biweekly</option>
                     <option value="TWICEMONTHLY">Twice monthly</option>
