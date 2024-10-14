@@ -54,7 +54,7 @@ body {
   }
 
   .bg-overlay {
-    @apply w-full h-full bg-white flex flex-col bg-opacity-50;
+    @apply w-full h-full bg-white flex flex-col bg-opacity-90;
   }
 
   .page-title-container {

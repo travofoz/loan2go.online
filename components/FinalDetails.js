@@ -16,9 +16,9 @@ const FinalDetails = (req) => {
         const storedConsent = localStorage.getItem('consent_sms_email');
         const storedTcpaPhone = localStorage.getItem('tcpa_phone');
         const storedAcceptTerms = localStorage.getItem('accept_terms');
-        const storedTfCertURL = document.querySelector('#xxTrustedFormCertUrl_0');
-        const storedTfToken = document.querySelector('#xxTrustedFormToken_0');
-        const storedTfPingURL = document.querySelector('#xxTrustedFormPingUrl_0');
+        const storedTfCertURL = localStorage.getItem('xxTrustedFormCertUrl_0');
+        const storedTfToken = localStorage.getItem('xxTrustedFormToken_0');
+        const storedTfPingURL = localStorage.getItem('xxTrustedFormPingUrl_0');
         if (storedConsent) setConsent(storedConsent);
         if (storedTcpaPhone) setTcpaPhone(storedTcpaPhone);
         if (storedAcceptTerms) setAcceptTerms(JSON.parse(storedAcceptTerms));
