@@ -5,7 +5,9 @@ import Link from 'next/link';
 const LoanDetails = () => {
     const [loanAmount, setLoanAmount] = useState(500);
     const [loanPurpose, setLoanPurpose] = useState('');
-
+    const [errors, setErrors] = useState({});
+    const [touched, setTouched] = useState({});
+    
     useEffect(() => {
         const storedLoanAmount = localStorage.getItem('loan_amount');
         const storedLoanPurpose = localStorage.getItem('loan_purpose');

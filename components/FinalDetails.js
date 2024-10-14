@@ -7,7 +7,8 @@ const FinalDetails = (req) => {
     const [tfCcertURL, setTfCertURL] = useState('');
     const [tfToken, setTfToken] = useState('');
     const [tfPingURL, setTfPingURL] = useState('');
-
+    const [errors, setErrors] = useState({});
+    const [touched, setTouched] = useState({});
 
 
 
@@ -39,6 +40,19 @@ const FinalDetails = (req) => {
             setAcceptTerms(checked);
             localStorage.setItem('accept_terms', checked);
         }
+    };
+
+    const handleBlur = (e) => {
+        const { name, value } = e.target;
+        const error = validate(name, value);
+        setErrors({ ...errors, [name]: error });
+        setTouched({ ...touched, [name]: true });
+        localStorage.setItem(name, value);
+    };
+
+    
+    const isFormValid = () => {
+        return Object.keys(errors).every(key => !errors[key]);
     };
 
     const handleSubmit = async (e) => {

@@ -11,6 +11,8 @@ const BankDetails = () => {
     const [accountType, setAccountType] = useState('');
     const [bankLength, setBankLength] = useState('');
     const [directDeposit, setDirectDeposit] = useState('');
+    const [errors, setErrors] = useState({});
+    const [touched, setTouched] = useState({});
 
     useEffect(() => {
         const storedIdNumber = localStorage.getItem('id_number');
@@ -33,18 +35,6 @@ const BankDetails = () => {
         if (storedBankLength) setBankLength(storedBankLength);
         if (storedDirectDeposit) setDirectDeposit(storedDirectDeposit);
     }, []);
-
-    const handleBlur = (e) => {
-        const { name, value } = e.target;
-        /*const error = validate(name, value);
-        setErrors({ ...errors, [name]: error });
-        setTouched({ ...touched, [name]: true });
-        if (!error) {
-            localStorage.setItem(name, value);
-        }
-        */
-        localStorage.setItem(name,value);
-    };
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -91,12 +81,56 @@ const BankDetails = () => {
         }
     };
 
+    const validate = (name, value) => {
+        let error = '';
+        switch (name) {
+            case 'id_number':
+            case 'id_state':
+            case 'bank_name':
+            case 'account_type':
+            case 'bank_length':
+            case 'direct_deposit':
+                if (!value) error = 'This field is required';
+                break;
+            case 'ssn':
+                if (!value) error = 'This field is required';
+                else if (!/^(?!000|666|9\d{2})(?!219-09-9999|078-05-1120)\d{3}-(?!00)\d{2}-(?!0{4})\d{4}$/.test(value)) error = 'Invalid SSN';
+                break;
+            case 'routing_number':
+                if (!value) error = 'This field is required';
+                else if (!/^\d{9}$/.test(value) || !/^\d{3}-\d{3}-\d{4}$/.test(value)) error = 'Invalid routing number length or type';
+                break;
+            case 'account_number':
+                if (!value) error = 'This field is required';
+                else if (!/^\d{6,}$/.test(value) || !/^\d{3}-\d{3}-\d{4}$/.test(value)) error = 'Invalid account number length or type';
+                break;
+            default:
+                break;
+        }
+        return error;
+    };
+
+    const handleBlur = (e) => {
+        const { name, value } = e.target;
+        const error = validate(name, value);
+        setErrors({ ...errors, [name]: error });
+        setTouched({ ...touched, [name]: true });
+        localStorage.setItem(name, value);
+    };
+
+    
+    const isFormValid = () => {
+        return Object.keys(errors).every(key => !errors[key]);
+    };
+
     return (
         <form className="space-y-4 mb-8 p-4 shadow-lg rounded-lg bg-white flex flex-col items-right border-zinc-900 border-4 border-opacity-30">
             <h2 className="text-lg font-semibold text-zinc-900 mb-4 capitalize">Step 5/6: Banks Details</h2>
             <div>
                 <label htmlFor="id_number" className="block text-sm font-black text-zinc-900">ID Number</label>
-                <input type="text" name="id_number" value={idNumber} onChange={handleChange} required className="mt-1 p-2 block w-full rounded-md border-zinc-700 border-2 border-opacity-20  shadow-sm focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50 bg-white"/>
+                <input type="text" name="id_number" value={idNumber} onChange={handleChange} onBlur={handleBlur} required className="mt-1 p-2 block w-full rounded-md border-zinc-700 border-2 border-opacity-20  shadow-sm focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50 bg-white"/>
+                {touched.id_number && errors.id_number && <p className="text-red-500 text-xs italic">{errors.id_number}</p>}
+
             </div>
             <div>
                 <label htmlFor="id_state" className="block text-sm font-black text-zinc-900">ID State</label>
@@ -155,30 +189,42 @@ const BankDetails = () => {
                     <option value="DC">District of Columbia</option>
                     <option value="PR">Puerto Rico</option>
                 </select>
+                {touched.id_state && errors.id_state && <p className="text-red-500 text-xs italic">{errors.id_state}</p>}
+
             </div>
             <div>
                 <label htmlFor="ssn" className="block text-sm font-black text-zinc-900">SSN</label>
-                <input type="password" name="ssn" value={ssn} onChange={handleChange} required className="mt-1 p-2 block w-full rounded-md border-zinc-700 border-2 border-opacity-20  shadow-sm focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50 bg-white"/>
+                <input type="password" name="ssn" value={ssn} onChange={handleChange} onBlur={handleBlur} required className="mt-1 p-2 block w-full rounded-md border-zinc-700 border-2 border-opacity-20  shadow-sm focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50 bg-white"/>
+                {touched.ssn && errors.ssn && <p className="text-red-500 text-xs italic">{errors.ssn}</p>}
+
             </div>
             <div>
                 <label htmlFor="routing_number" className="block text-sm font-black text-zinc-900">Routing Number</label>
-                <input name="routing_number" value={routingNumber} onChange={handleChange} required className="mt-1 p-2 block w-full rounded-md border-zinc-700 border-2 border-opacity-20  shadow-sm focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50 bg-white"/>
+                <input name="routing_number" value={routingNumber} onChange={handleChange} onBlur={handleBlur} required className="mt-1 p-2 block w-full rounded-md border-zinc-700 border-2 border-opacity-20  shadow-sm focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50 bg-white"/>
+                {touched.routing_number && errors.routing_number && <p className="text-red-500 text-xs italic">{errors.routing_number}</p>}
+
             </div>
             <div>
                 <label htmlFor="bank_name" className="block text-sm font-black text-zinc-900">Bank Name</label>
-                <input name="bank_name" value={bankName} onChange={handleChange} required className="mt-1 p-2 block w-full rounded-md border-zinc-700 border-2 border-opacity-20  shadow-sm focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50 bg-white"/>
+                <input name="bank_name" value={bankName} onChange={handleChange} onBlur={handleBlur} required className="mt-1 p-2 block w-full rounded-md border-zinc-700 border-2 border-opacity-20  shadow-sm focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50 bg-white"/>
+                {touched.bank_name && errors.bank_name && <p className="text-red-500 text-xs italic">{errors.bank_name}</p>}
+
             </div>
             <div>
                 <label htmlFor="account_number" className="block text-sm font-black text-zinc-900">Account Number</label>
-                <input name="account_number" value={accountNumber} onChange={handleChange} required className="mt-1 p-2 block w-full rounded-md border-zinc-700 border-2 border-opacity-20  shadow-sm focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50 bg-white"/>
+                <input name="account_number" value={accountNumber} onChange={handleChange} onBlur={handleBlur} required className="mt-1 p-2 block w-full rounded-md border-zinc-700 border-2 border-opacity-20  shadow-sm focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50 bg-white"/>
+                {touched.account_number && errors.account_number && <p className="text-red-500 text-xs italic">{errors.account_number}</p>}
+
             </div>
             <div>
                 <label htmlFor="account_type" className="block text-sm font-black text-zinc-900">Account Type</label>
-                <select name="account_type" value={accountType} onChange={handleChange} required className="mt-1 p-2 block w-full rounded-md border-zinc-700 border-2 border-opacity-20  shadow-sm focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50 bg-white">
+                <select name="account_type" value={accountType} onChange={handleChange} onBlur={handleBlur} required className="mt-1 p-2 block w-full rounded-md border-zinc-700 border-2 border-opacity-20  shadow-sm focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50 bg-white">
                     <option value="">Select Account Type</option>
                     <option value="CHECKING">Checking</option>
                     <option value="SAVINGS">Savings</option>
                     </select>
+                    {touched.account_type && errors.account_type && <p className="text-red-500 text-xs italic">{errors.account_type}</p>}
+
             </div>
             <div>
                 <label htmlFor="bank_length" className="block text-sm font-black text-zinc-900">Bank Length</label>
@@ -190,21 +236,26 @@ const BankDetails = () => {
                     step="0.5"
                     value={bankLength}
                     onChange={handleChange}
+                    onBlur={handleBlur}
                     required
                     className="m-2 block w-full rounded-md border-zinc-700 border-2 border-opacity-20  focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50 bg-white accent-emerald-700"
                 />
+                {touched.bank_length && errors.bank_length && <p className="text-red-500 text-xs italic">{errors.bank_length}</p>}
+
                 <p className="block text-4xl font-black text-emerald-700 text-center">{bankLength === "0.5" ? "Less than a year" : `${bankLength} years`}</p>
 
             </div>
             <div>
                 <label htmlFor="direct_deposit" className="block text-sm font-black text-zinc-900">Direct Deposit</label>
-                <select name="direct_deposit" value={directDeposit} onChange={handleChange} required className="mt-1 p-2 block w-full rounded-md border-zinc-700 border-2 border-opacity-20  shadow-sm focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50 bg-white">
+                <select name="direct_deposit" value={directDeposit} onChange={handleChange} onBlur={handleBlur} required className="mt-1 p-2 block w-full rounded-md border-zinc-700 border-2 border-opacity-20  shadow-sm focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50 bg-white">
                     <option value="">Select Direct Deposit</option>
                     <option value="YES">Yes</option>
                     <option value="NO">No</option>
                 </select>
+                {touched.direct_deposit && errors.direct_deposit && <p className="text-red-500 text-xs italic">{errors.direct_deposit}</p>}
+
             </div>
-            <Link href="/final-details"  className="w-auto flex justify-center py-2 px-4 border-2 border-green-300 rounded-md shadow-sm text-sm font-medium text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 {Object.keys(errors).some(key => errors[key]) ? 'pointer-events-none' : ''}">
+            <Link href="/final-details"  className={`w-auto flex justify-center py-2 px-4 border-2 rounded-md shadow-sm text-sm font-medium text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 ${!isFormValid() ? 'pointer-events-none opacity-50' : 'border-green-300'}`}>
                 Next
             </Link>
         </form>

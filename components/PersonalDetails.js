@@ -2,16 +2,6 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 
 const PersonalDetails = () => {
-    /* old way. we dont do this now. 
-    
-    const [formData, setFormData] = useState({
-        first_name: '',
-        last_name: '',
-        email: '',
-        phone: '',
-        active_military: 'NO',
-        dob: ''
-    }); */
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
     const [email, setEmail] = useState('');
@@ -26,14 +16,14 @@ const PersonalDetails = () => {
         const storedLastName = localStorage.getItem('last_name');
         const storedEmail = localStorage.getItem('email');
         const storedPhone = localStorage.getItem('phone');
-        const storedDOB = localStorage.getItem('dob');
+        const storedDob = localStorage.getItem('dob');
         const storedActiveMilitary = localStorage.getItem('active_military');
-        if (storedFirstName) setFormData(storedFirstName);
-        if (storedLastName) setFormData(storedLastName);
-        if (storedEmail) setFormData(storedEmail);
-        if (storedPhone) setFormData(storedPhone);
-        if (storedDOB) setFormData(storedDOB);
-        if (storedActiveMilitary) setFormData(storedActiveMilitary);
+        if (storedFirstName) setFirstName(storedFirstName);
+        if (storedLastName) setLastName(storedLastName);
+        if (storedEmail) setEmail(storedEmail);
+        if (storedPhone) setPhone(storedPhone);
+        if (storedDob) setDob(storedDob);
+        if (storedActiveMilitary) setActiveMilitary(storedActiveMilitary);
     }, []);
 
 
@@ -100,32 +90,32 @@ const PersonalDetails = () => {
             <h2 className="text-lg font-semibold text-zinc-900 mb-4 capitalize">Step 2/6: Personal Details</h2>
             <div>
                 <label htmlFor="first_name" className="block text-sm font-black text-zinc-900">First Name</label>
-                <input name="first_name" value={formData.first_name} onChange={handleChange} onBlur={handleBlur} required className={`mt-1 p-2 block w-full rounded-md border-2 shadow-sm focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50 bg-white ${touched.first_name && errors.first_name ? 'border-red-500' : 'border-zinc-700 border-opacity-20'}`} />
+                <input name="first_name" value={firstName} onChange={handleChange} onBlur={handleBlur} required className={`mt-1 p-2 block w-full rounded-md border-2 shadow-sm focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50 bg-white ${touched.first_name && errors.first_name ? 'border-red-500' : 'border-zinc-700 border-opacity-20'}`} />
                 {touched.first_name && errors.first_name && <p className="text-red-500 text-xs italic">{errors.first_name}</p>}
             </div>
             <div>
                 <label htmlFor="last_name" className="block text-sm font-black text-zinc-900">Last Name</label>
-                <input name="last_name" value={formData.last_name} onChange={handleChange} onBlur={handleBlur} required className={`mt-1 p-2 block w-full rounded-md border-2 shadow-sm focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50 bg-white ${touched.last_name && errors.last_name ? 'border-red-500' : 'border-zinc-700 border-opacity-20'}`} />
+                <input name="last_name" value={lastName} onChange={handleChange} onBlur={handleBlur} required className={`mt-1 p-2 block w-full rounded-md border-2 shadow-sm focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50 bg-white ${touched.last_name && errors.last_name ? 'border-red-500' : 'border-zinc-700 border-opacity-20'}`} />
                 {touched.last_name && errors.last_name && <p className="text-red-500 text-xs italic">{errors.last_name}</p>}
             </div>
             <div>
                 <label htmlFor="email" className="block text-sm font-black text-zinc-900">Email</label>
-                <input type="email" name="email" value={formData.email} onChange={handleChange} onBlur={handleBlur} required className={`mt-1 p-2 block w-full rounded-md border-2 shadow-sm focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50 bg-white ${touched.email && errors.email ? 'border-red-500' : 'border-zinc-700 border-opacity-20'}`} />
+                <input type="email" name="email" value={email} onChange={handleChange} onBlur={handleBlur} required className={`mt-1 p-2 block w-full rounded-md border-2 shadow-sm focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50 bg-white ${touched.email && errors.email ? 'border-red-500' : 'border-zinc-700 border-opacity-20'}`} />
                 {touched.email && errors.email && <p className="text-red-500 text-xs italic">{errors.email}</p>}
             </div>
             <div>
                 <label htmlFor="phone" className="block text-sm font-black text-zinc-900">Phone</label>
-                <input type="tel" name="phone" value={formData.phone} onChange={handleChange} onBlur={handleBlur} required className={`mt-1 p-2 block w-full rounded-md border-2 shadow-sm focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50 bg-white ${touched.phone && errors.phone ? 'border-red-500' : 'border-zinc-700 border-opacity-20'}`} />
+                <input type="tel" name="phone" value={phone} onChange={handleChange} onBlur={handleBlur} required className={`mt-1 p-2 block w-full rounded-md border-2 shadow-sm focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50 bg-white ${touched.phone && errors.phone ? 'border-red-500' : 'border-zinc-700 border-opacity-20'}`} />
                 {touched.phone && errors.phone && <p className="text-red-500 text-xs italic">{errors.phone}</p>}
             </div>
             <div>
                 <label htmlFor="dob" className="block text-sm font-black text-zinc-900">Date of Birth</label>
-                <input type="date" name="dob" value={formData.dob} onChange={handleChange} required className="mt-1 p-2 block w-full rounded-md border-zinc-700 border-2 border-opacity-20  shadow-sm focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50 bg-white"/>
+                <input type="date" name="dob" value={dob} onChange={handleChange} required className="mt-1 p-2 block w-full rounded-md border-zinc-700 border-2 border-opacity-20  shadow-sm focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50 bg-white"/>
                 {touched.dob && errors.dob && <p className="text-red-500 text-xs italic">{errors.dob}</p>}
             </div>
             <div>
                 <label htmlFor="active_military" className="block text-sm font-black text-zinc-900">Active Military</label>
-                <select name="active_military" value={formData.active_military} onChange={handleChange} required className="mt-1 p-2 block w-full rounded-md border-zinc-700 border-2 border-opacity-20  shadow-sm focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50 bg-white">
+                <select name="active_military" value={activeMilitary} onChange={handleChange} required className="mt-1 p-2 block w-full rounded-md border-zinc-700 border-2 border-opacity-20  shadow-sm focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50 bg-white">
                     <option value="NO">No</option>
                     <option value="YES">Yes</option>
                 </select>

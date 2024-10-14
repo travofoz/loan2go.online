@@ -6,7 +6,7 @@ import Navmenu from './navmenu';
 const Logo = () => {
     return (
         <Image
-            src="bulldog.svg" // replace with your logo path
+            src="loan2go.svg" // replace with your logo path
             alt="Loan2Go.Online"
             width={50} // set your desired width
             height={50} // set your desired height
