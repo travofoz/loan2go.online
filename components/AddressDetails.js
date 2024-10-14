@@ -34,6 +34,7 @@ const AddressDetails = () => {
 
     const handleChange = (e) => {
         const { name, value } = e.target;
+        const error = validate(name, value);
         if (name === 'address1') {
             setAddress1(value);
         } else if (name === 'address2') {
@@ -48,6 +49,11 @@ const AddressDetails = () => {
             setResidenceLength(value);
         } else if (name === 'residence_type') {
             setResidenceType(value);
+        }
+
+        // Clear the error message if the input is valid
+        if (!error) {
+            setErrors({ ...errors, [name]: '' });
         }
     };
 

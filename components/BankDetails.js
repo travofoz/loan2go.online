@@ -38,6 +38,7 @@ const BankDetails = () => {
 
     const handleChange = (e) => {
         const { name, value } = e.target;
+        const error = validate(name, value);
 
         switch (name) {
             case 'id_number':
@@ -78,6 +79,10 @@ const BankDetails = () => {
                 break;
             default:
                 break;
+        }
+        // Clear the error message if the input is valid
+        if (!error) {
+            setErrors({ ...errors, [name]: '' });
         }
     };
 

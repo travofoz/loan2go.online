@@ -39,6 +39,8 @@ const EmploymentDetails = () => {
 
     const handleChange = (e) => {
         const { name, value } = e.target;
+        const error = validate(name, value);
+
         if (name === 'employer') {
             setEmployer(value);
             localStorage.setItem('employer', value);
@@ -66,6 +68,10 @@ const EmploymentDetails = () => {
         } else if (name === 'income_net_monthly') { 
             setIncomeNetMonthly(value);
             localStorage.setItem('income_net_monthly', value);
+        }
+        // Clear the error message if the input is valid
+        if (!error) {
+            setErrors({ ...errors, [name]: '' });
         }
     };
     const validate = (name, value) => {
