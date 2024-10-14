@@ -9,7 +9,7 @@ const BankDetails = () => {
     const [bankName, setBankName] = useState('');
     const [accountNumber, setAccountNumber] = useState('');
     const [accountType, setAccountType] = useState('');
-    const [bankLength, setBankLength] = useState('');
+    const [bankLength, setBankLength] = useState('1');
     const [directDeposit, setDirectDeposit] = useState('');
     const [errors, setErrors] = useState({});
     const [touched, setTouched] = useState({});
