@@ -51,6 +51,8 @@ const PersonalDetails = () => {
 
     const handleChange = (e) => {
         const { name, value } = e.target;
+        const error = validate(name, value);
+    
         if (name === 'first_name') {
             setFirstName(value);
             localStorage.setItem('first_name', value);
@@ -66,10 +68,15 @@ const PersonalDetails = () => {
         } else if (name === 'active_military') {
             setActiveMilitary(value);
             localStorage.setItem('active_military', value);
-        } else if (name === 'dob') { 
+        } else if (name === 'dob') {
             setDob(value);
             localStorage.setItem('dob', value);
-        } 
+        }
+    
+        // Clear the error message if the input is valid
+        if (!error) {
+            setErrors({ ...errors, [name]: '' });
+        }
     };
 
     const handleBlur = (e) => {
