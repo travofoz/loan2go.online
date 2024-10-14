@@ -2,7 +2,7 @@ export const siteLinks = [
   { href: "/", label: "Home" },
   { href: "/start", label: "Start" },
   { href: "/about", label: "About" },
-  { href: "/help", label: "Help" },
+  //{ href: "/help", label: "Help" }
 
   //{ href: "/links", label: "Links" },
 ];
